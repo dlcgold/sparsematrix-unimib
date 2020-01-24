@@ -1,0 +1,72 @@
+#ifndef SPARSEMATRIX_H
+#define SPARSEMATRIX_H
+
+template <typename T>
+class sparse_matrix{
+private:
+  T default_value;
+  int size_row;
+  int size_column;
+  struct node{
+    T value;
+    int i;
+    int j;
+    
+    node *next;
+
+    
+    node(): next(nullptr){}
+
+    node(const T &v, const int x, const int y): value(v), i(x), j(y),
+						next(nullptr){}
+  
+   
+    //node(const T &v, node *n): value(v), next(n){}
+    
+  };
+
+  node *head;
+  unsigned int size;
+  
+public:
+
+  sparse_matrix(T dvalue): default_value(dvalue), size(0), head(nullptr),
+			   size_row(0), size_column(0){};
+  
+
+  const T get_default_value() const {
+    return default_value;
+  }
+  
+  int get_size_column() const {
+    return size_column;
+  }
+
+  int get_size_row() const {
+    return size_row;
+  }
+
+  
+  unsigned int get_size() const {
+    return size;
+  }
+
+  void add(const T &v, const int i, const int j){
+    node *elem = new node(v, i, j);
+    if(head == nullptr){
+      head = elem;
+      size++;
+      return;
+    }
+    head.
+    /* bool check = true;
+    node *current = head;
+    while(check){
+      if()
+      }*/
+  }
+  
+};
+
+
+#endif

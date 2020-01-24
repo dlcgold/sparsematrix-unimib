@@ -1,0 +1,11 @@
+#include <iostream>
+#include "sparsematrix.hpp"
+#include <vector>
+typedef sparse_matrix<int> smatrixi;
+int main(){
+  smatrixi test(0);
+  std::cout << test.get_default_value() << "\n";
+  test.add(3, 2, 2);
+  std::cout << test.get_size();
+  
+}

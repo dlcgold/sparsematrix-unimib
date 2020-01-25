@@ -14,8 +14,8 @@ private:
   int size_column;
   struct node{
     T value;
-    int i;
-    int j;
+    unsigned int i;
+    unsigned int j;
     
     node *next;
 
@@ -34,6 +34,7 @@ private:
   };
 
   node *head;
+  node *tail;
   unsigned int size;
 
   
@@ -79,7 +80,7 @@ public:
     return *this;
   }
 
-  bool find(int i, int j) const{
+  bool find(unsigned int i, unsigned int j) const{
     node *current = head;
     while(current != nullptr){
       if(current->i == i && current->j == j)
@@ -89,12 +90,12 @@ public:
     return false;
   }
   
-  void add(const T &v, const int i, const int j) {
+  void add(const T &v, const unsigned int i, const unsigned int j) {
     node *elem = new node(v, i, j);
     node *temp = head;
     size++;
-    int max_row = 0;
-    int max_column = 0;
+    unsigned int max_row = 0;
+    unsigned int max_column = 0;
     if(head == nullptr){
       head = elem;
       //size++;
@@ -118,9 +119,13 @@ public:
 
 	// se sono arrivato alla fine aggiungo il valore alla fine
 	if(temp->next == nullptr) {
+	  // tail = elem;
+	  // tail->next = nullptr;
+	  // temp->next = tail;
 	  elem->next = nullptr;
 	  temp->next = elem;
-	  
+	  //tail=elem;
+	 
 	  //size++;
 	}else {
 	  // aggiungo il valore in mezzo
@@ -193,70 +198,95 @@ public:
 
   // iteratore
 
-  class const_iterator{
+  class iterator{
   private:
     const node *iter;
     
+    struct element{
+      T value;
+      const unsigned int i;
+      const unsigned int j;
+      element(const T &v, const int x, const int y): value(v), i(x), j(y) {}
+      element(const node *n){
+	value = n->value;
+	i = n->i;
+	j = n->j; 
+      }
+    };
+    
+    friend class sparse_matrix;
+
+    // costruttore per iterare su struttura dati
+    iterator(const node *n) : iter(n) {}
   public:
+    typedef std::forward_iterator_tag iterator_category;
+    typedef node value_type;
+    typedef ptrdiff_t difference_type;
+    typedef node* pointer;
+    typedef node& reference;
+    
     //costruttori
-    const_iterator() : iter(nullptr) {}
-    const_iterator(const const_iterator &other) : iter(other.iter) {}
+    iterator() : iter(nullptr) {}
+    iterator(const iterator &other) : iter(other.iter) {}
 
     // override assegnamento
-    const_iterator& operator=(const const_iterator &other) {
+    iterator& operator=(const iterator &other) {
       iter = other.iter;
       return *this;
     }
 
     //distruttore
-    ~const_iterator() {}
+    ~iterator() {}
 
-    // ovveride accesso
-    const T& operator*() const{
-      return iter->value;
-    }
-    const T& operator->() const{
-      return &(iter->value);
-    }
-
-    // override post e pre incremento
-    const_iterator operator++(int) {
-      const_iterator tmp(*this);
-      iter = iter->next;
-      return tmp;
+     // ovveride accesso
+    element& operator*() const{
+      element* res = new element(iter->value, iter->i, iter->j);
+      return res;
+      }
+    element* operator->() const{
+      element* res = new element(iter->value, iter->i, iter->j);
+      //std::cout << res->value << "\n";
+      return &*res;
     }
     
-    const_iterator& operator++() {
+    // override post e pre incremento
+    element& operator++(int) {
+      iterator tmp(*this);
       iter = iter->next;
-      return *this;
+      element* res = new element(tmp->value, tmp->i, tmp->j);
+      return *res;
     }
-
+    
+    element& operator++() {
+      
+	iter = iter->next;
+	element* res  = new element(iter->value, iter->i, iter->j);
+      
+	return *res;
+      
+      
+    }
+    
     // override uguaglianza
-    bool operator==(const const_iterator &other) const {
-      return (iter == other.iter);
+    bool operator==(const iterator &other) const {
+      return (iter->i == other->i && iter->j == other->j);
     }
-		
-    /**
-       @brief operator !=
-       @return true if not equal
-    */
-    bool operator!=(const const_iterator &other) const {
+        
+    bool operator!=(const iterator &other) const {
+      //return (iter->i != other->i && iter->j != other->j);
       return (iter != other.iter);
     }
-
-  private:
-    friend class sparse_matrix;
-
-    // costruttore per iterare su struttura dati
-    const_iterator(const node *iter) : iter(iter) {}
+    
+  
+    
   };
 
   // begin e end
-  const_iterator begin() const {
-    return const_iterator(head);
+  iterator begin() const {
+    return iterator(head);
   }
-  const_iterator end() const {
-    return const_iterator(nullptr);
+  iterator end() const {
+    return iterator(nullptr);
   }
 };
 
@@ -265,17 +295,22 @@ template <typename T>
 std::ostream &operator<<(std::ostream &os, 
 			 const sparse_matrix<T> smatrix) {
 	
-  typename sparse_matrix<T>::const_iterator i, ie;
+  typename sparse_matrix<T>::iterator i, ie;
 	
   i = smatrix.begin();
   ie = smatrix.end();
-
+  int prevrow=i->i;
   while(i!=ie) {
-    os << *i << " ";
+    if(i->i != prevrow)
+      std::cout << std::endl;
+    os << i->value << "\t";
     
+    prevrow = i->i;
     ++i;
   }
-
+  // if(ie->i != prevrow)
+  //     std::cout << std::endl;
+  //   os << ie->value << "\t";
   return os;
-}
+  }
 #endif

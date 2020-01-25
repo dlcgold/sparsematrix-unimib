@@ -30,13 +30,14 @@ int main(){
 
   smatrixi copy(test);
   test.print();
-  test.clear();
+  //test.clear();
   std::cout << "numero elementi after clear: "<<  test.get_size() << "\n";
   std::cout << "print di copy\n";
   copy.print();
-  smatrixi::const_iterator i,ie;
-
-  for(i=test.begin(),ie=test.end(); i!=ie; ++i)
-    std::cout<<*i<<std::endl;
+  smatrixi::iterator i,ie;
+  for(i=test.begin(), ie=test.end(); i!=ie; ++i)
+    std::cout << i->value << std::endl;
+  // std::cout << i->value << std::endl;
+  // std::cout << test<< std::endl;
   return 0;
 }

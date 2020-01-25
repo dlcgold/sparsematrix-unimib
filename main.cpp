@@ -22,6 +22,7 @@ int main(){
   test.add(1, 0, 0);
   test.add(2, 0, 2);
   test.add(3, 0, 0);
+  test.add(83, 830, 9);
   std::cout << "numero elementi: "<<  test.get_size() << "\n";
   std::cout << "numero righe: "<<  test.get_size_row() << "\n";
   std::cout << "numero colonne: "<<  test.get_size_column() << "\n";
@@ -35,9 +36,10 @@ int main(){
   std::cout << "print di copy\n";
   copy.print();
   smatrixi::iterator i,ie;
-  for(i=test.begin(), ie=test.end(); i!=ie; ++i)
+  for(i=test.begin(), ie=test.end(); i!=ie; i++)
     std::cout << i->value << std::endl;
-  // std::cout << i->value << std::endl;
-  // std::cout << test<< std::endl;
+  
+  std::cout << test << std::endl;
+  test.clear();
   return 0;
 }

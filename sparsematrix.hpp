@@ -12,14 +12,16 @@ private:
   T default_value;
   int size_row;
   int size_column;
-  struct node{
+  class node{
+  private: node *next;
+  public:
     T value;
     unsigned int i;
     unsigned int j;
     
-    node *next;
+  
 
-    
+  public:
     node(): next(nullptr){}
 
     node(const T &v, const int x, const int y): value(v), i(x), j(y),
@@ -30,7 +32,8 @@ private:
 
     ~node(){
       next = nullptr;
-    }    
+    }
+    friend class sparse_matrix;
   };
 
   node *head;
@@ -119,9 +122,6 @@ public:
 
 	// se sono arrivato alla fine aggiungo il valore alla fine
 	if(temp->next == nullptr) {
-	  // tail = elem;
-	  // tail->next = nullptr;
-	  // temp->next = tail;
 	  elem->next = nullptr;
 	  temp->next = elem;
 	  //tail=elem;
@@ -200,30 +200,18 @@ public:
 
   class iterator{
   private:
-    const node *iter;
-    
-    struct element{
-      T value;
-      const unsigned int i;
-      const unsigned int j;
-      element(const T &v, const int x, const int y): value(v), i(x), j(y) {}
-      element(const node *n){
-	value = n->value;
-	i = n->i;
-	j = n->j; 
-      }
-    };
+    node *iter;
     
     friend class sparse_matrix;
 
     // costruttore per iterare su struttura dati
-    iterator(const node *n) : iter(n) {}
+    iterator(node *n) : iter(n) {}
   public:
-    typedef std::forward_iterator_tag iterator_category;
-    typedef node value_type;
-    typedef ptrdiff_t difference_type;
-    typedef node* pointer;
-    typedef node& reference;
+    // typedef std::forward_iterator_tag iterator_category;
+    // typedef node value_type;
+    // typedef ptrdiff_t difference_type;
+    // typedef node* pointer;
+    // typedef node& reference;
     
     //costruttori
     iterator() : iter(nullptr) {}
@@ -239,32 +227,26 @@ public:
     ~iterator() {}
 
      // ovveride accesso
-    element& operator*() const{
-      element* res = new element(iter->value, iter->i, iter->j);
-      return res;
+    node& operator*() const{
+      
+      return iter;
       }
-    element* operator->() const{
-      element* res = new element(iter->value, iter->i, iter->j);
-      //std::cout << res->value << "\n";
-      return &*res;
+    node* operator->() const{
+      
+      return &*iter;
     }
     
     // override post e pre incremento
-    element& operator++(int) {
+    node& operator++(int) {
       iterator tmp(*this);
       iter = iter->next;
-      element* res = new element(tmp->value, tmp->i, tmp->j);
-      return *res;
+      return *iter;
     }
     
-    element& operator++() {
-      
-	iter = iter->next;
-	element* res  = new element(iter->value, iter->i, iter->j);
-      
-	return *res;
-      
-      
+    node& operator++() {
+      // element* res;
+      iter = iter->next;
+      return *iter;  
     }
     
     // override uguaglianza
@@ -299,7 +281,7 @@ std::ostream &operator<<(std::ostream &os,
 	
   i = smatrix.begin();
   ie = smatrix.end();
-  int prevrow=i->i;
+  unsigned int prevrow=i->i;
   while(i!=ie) {
     if(i->i != prevrow)
       std::cout << std::endl;
@@ -308,9 +290,7 @@ std::ostream &operator<<(std::ostream &os,
     prevrow = i->i;
     ++i;
   }
-  // if(ie->i != prevrow)
-  //     std::cout << std::endl;
-  //   os << ie->value << "\t";
+  
   return os;
   }
 #endif

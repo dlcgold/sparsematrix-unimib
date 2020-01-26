@@ -16,8 +16,8 @@ private:
   private: node *next;
   public:
     T value;
-    unsigned int i;
-    unsigned int j;
+    const unsigned int i;
+    const unsigned int j;
     
   
 
@@ -168,6 +168,22 @@ public:
     }
   }
 
+  T& operator()(unsigned int x, unsigned int y) {
+    
+    node *current = head;
+    T& value = default_value;
+    std::cout << value << "\n";
+    while(current != nullptr){
+     
+      if(current->i == x && current->j == y){
+       	return current->value;
+      }
+      
+      current = current->next;
+    }
+    return value;
+  }
+  
   void clear(){
     recursive_clear(head);
     head = nullptr;
@@ -200,12 +216,12 @@ public:
 
   class iterator{
   private:
-    node *iter;
+    node *element;
     
     friend class sparse_matrix;
 
     // costruttore per iterare su struttura dati
-    iterator(node *n) : iter(n) {}
+    iterator(node *n) : element(n) {}
   public:
     // typedef std::forward_iterator_tag iterator_category;
     // typedef node value_type;
@@ -214,12 +230,12 @@ public:
     // typedef node& reference;
     
     //costruttori
-    iterator() : iter(nullptr) {}
-    iterator(const iterator &other) : iter(other.iter) {}
+    iterator() : element(nullptr) {}
+    iterator(const iterator &other) : element(other.element) {}
 
     // override assegnamento
     iterator& operator=(const iterator &other) {
-      iter = other.iter;
+      element = other.element;
       return *this;
     }
 
@@ -229,34 +245,34 @@ public:
      // ovveride accesso
     node& operator*() const{
       
-      return iter;
+      return element;
       }
     node* operator->() const{
       
-      return &*iter;
+      return &*element;
     }
     
     // override post e pre incremento
     node& operator++(int) {
       iterator tmp(*this);
-      iter = iter->next;
-      return *iter;
+      element = element->next;
+      return *element;
     }
     
     node& operator++() {
       // element* res;
-      iter = iter->next;
-      return *iter;  
+      element = element->next;
+      return *element;  
     }
     
     // override uguaglianza
     bool operator==(const iterator &other) const {
-      return (iter->i == other->i && iter->j == other->j);
+      return (element->i == other->i && element->j == other->j);
     }
         
     bool operator!=(const iterator &other) const {
       //return (iter->i != other->i && iter->j != other->j);
-      return (iter != other.iter);
+      return (element != other.element);
     }
     
   
@@ -270,6 +286,8 @@ public:
   iterator end() const {
     return iterator(nullptr);
   }
+
+  
 };
 
 // overload << per stampa

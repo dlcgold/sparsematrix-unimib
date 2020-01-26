@@ -3,7 +3,7 @@
 
 #include <cmath>
 #include <iostream>
-#include <iterator>
+//#include <iterator>
 #include <ostream>
 
 template <typename T>
@@ -24,11 +24,11 @@ private:
   public:
     node(): next(nullptr){}
 
-    node(const T &v, const int x, const int y): value(v), i(x), j(y),
-						next(nullptr){}
-  
-    node(const T &v, const int x, const int y, node *n): value(v), i(x),
-							 j(y), next(n){}
+    node(const T &v, const int x, const int y): next(nullptr), value(v),
+						i(x), j(y){}
+						
+    node(node *n, const T &v, const int x, const int y): next(n), value(v),
+							 i(x), j(y){}
 
     ~node(){
       next = nullptr;

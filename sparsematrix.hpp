@@ -41,6 +41,17 @@ class NoCastSparseMatrixException: public std::exception {
     }
 };
 
+class NegativeIndexSparseMatrixException: public std::exception {
+    virtual const char* what() const throw() {
+        return "indice negativo";
+    }
+};
+
+class NegativeDimensionSparseMatrixException: public std::exception {
+    virtual const char* what() const throw() {
+        return "indice negativo";
+    }
+};
 /**
  * @brief Classe sparse_matrix per matrice sparsa
  *
@@ -60,25 +71,25 @@ private:
    * @brief numero massimo di righe, eventualmente scelto dall'utente
    *
    */
-  unsigned int max_row;
+  int max_row;
   
   /**
    * @brief numero massimo di colonne, eventualmente scelto dall'utente
    *
    */
-  unsigned int max_column;
+  int max_column;
 
   /**
    * @brief numero di righe
    *
    */
-  unsigned int size_row;
+  int size_row;
 
   /**
    * @brief numero di colonne
    *
    */
-  unsigned int size_column;
+  int size_column;
 
   /**
    * @brief elemento che rappresenta una cella della matrice sparsa
@@ -103,19 +114,19 @@ private:
      * @brief indice di riga, non modificabile 
      *
      */
-    const unsigned int i;
+    const int i;
 
     /**
      * @brief indice di colonna, non modificabile 
      *
      */
-    const unsigned int j;
+    const int j;
     
     /**
      * @brief costruttore di default dell'elemento
      *
      */
-    node(): next(nullptr){}
+    // node(): next(nullptr){}
 
     /**
      * @brief costruttore dell'elemento senza elemento successivo
@@ -126,18 +137,6 @@ private:
      */
     node(const T &v, const int x, const int y): next(nullptr), value(v),
 						i(x), j(y){}
-
-
-     /**
-     * @brief costruttore dell'elemento con elemento successivo
-     *
-     * @param n elemento successivo
-     * @param v valore della cella
-     * @param x indice di riga della cella
-     * @param y indice di colonna della cella
-     */
-    node(node *n, const T &v, const int x, const int y): next(n), value(v),
-							 i(x), j(y){}
 
     /**
      * @brief distruttore del nodo
@@ -156,7 +155,7 @@ private:
 
   /**
    * @brief puntatore alla testa
-   * 
+   * costruttore
    */
   node *head;
 
@@ -164,7 +163,7 @@ private:
     * @brief numero totale di elementi inseriti
     *
     */
-  unsigned int size;
+  int size;
 
   /**
    * @brief distrugge gli elementi linkati a partire da un elemento
@@ -188,7 +187,7 @@ public:
    *
    * @return massimo numero di righe di sparse_matrix
    */
-  unsigned int get_max_row() const {
+  int get_max_row() const {
     return max_row;
   }
 
@@ -197,7 +196,7 @@ public:
    *
    * @return massimo numero di colonne di sparse_matrix
    */
-  unsigned int get_max_column() const {
+  int get_max_column() const {
     return max_column;
   }
 
@@ -241,12 +240,12 @@ public:
    * @brief getter del numero di elementi
    *
    */
-  unsigned int get_size() const {
+  int get_size() const {
     return size;
   }
   
   /**
-   * @brief costruttore della matrica di dimensioni indefinite
+   * @brief costruttore della matrice di dimensioni indefinite
    *
    * @param dvalue valore di default obbligatorio
    */
@@ -256,15 +255,20 @@ public:
 
 
   /**
-   * @brief costruttore della matrica di dimensioni definite
+   * @brief costruttore della matrice di dimensioni definite
    *
    * @param dvalue valore di default obbligatorio
    * @param row numero di righe
    * @param column numero di colonne
+   *
+   * @throw NegativeDimensionSparseMatrixException() per dimensioni negative
    */
-  sparse_matrix(T dvalue, unsigned int row, unsigned int column):
+  sparse_matrix(T dvalue, int row, int column):
     default_value(dvalue), max_row(row), max_column(column), size_row(0),
-    size_column(0), head(nullptr), size(0){};
+    size_column(0), head(nullptr), size(0){
+    if(row < 0 || column < 0)
+      NegativeDimensionSparseMatrixException();
+  };
   
 
   /**
@@ -309,8 +313,11 @@ public:
    * @param j indice di colonna della cella in cui aggiungere il valore
    *
    * @throw IndexOutOfBoundsException() cella fuori dalla matrice
+   * @throw NegativeIndexSparseMatrixException() indici negativi
    */
-  void add(const T &v, const unsigned int i, const unsigned int j) {
+  void add(const T &v, const int i, const int j) {
+    if(i < 0 || j < 0)
+      throw  NegativeIndexSparseMatrixException();
     if((i < max_row) && (j < max_column)){
       
       node *elem = new node(v, i, j);
@@ -337,8 +344,15 @@ public:
 
 	  // se sono arrivato alla fine aggiungo il valore alla fine
 	  if(temp->next == nullptr) {
-	    elem->next = nullptr;
-	    temp->next = elem;
+	    if(elem->i == temp->i && elem->j == temp->j) {
+	      temp->value = elem->value;
+	      size--;
+	      // avendo sovrascritto cancello elem
+	      delete elem;
+	    }else{
+	      elem->next = nullptr;
+	      temp->next = elem;
+	    }
 	    //tail=elem;
 	 
 	    //size++;
@@ -362,8 +376,8 @@ public:
       throw IndexOutOfBoundsException();
     }
     // conto massima riga e colonna
-    unsigned int max_row_current = 0;
-    unsigned int max_column_current = 0;
+    int max_row_current = 0;
+    int max_column_current = 0;
     node *iter = head;
     while(iter != nullptr){
       if(iter->i > max_row_current)
@@ -402,18 +416,19 @@ public:
    * @return valore della cella richiesta
    *
    * @throw IndexOutOfBoundsException() cella fuori dalla matrice
+   * @throw NegativeIndexSparseMatrixException() indici negativi
    */
-  T& operator()(unsigned int x, unsigned int y) {
+  const T& operator()(int x, int y) {
+    if(x < 0 || y < 0)
+      throw  NegativeIndexSparseMatrixException();
     if((x < max_row) && (y < max_column)){
       node *current = head;
       T& value = default_value;
     
-      while(current != nullptr){
-     
+      while(current != nullptr) {
 	if(current->i == x && current->j == y){
 	  return current->value;
 	}
-      
 	current = current->next;
       }
       return value;
@@ -693,11 +708,14 @@ public:
    * @param other altra sparse_matrix con valori di tipo Q
    *
    * @throw NoCastSparseMatrixException() eccezione cast fallito
+   * @throw NegativeIndexSparseMatrixException() indici negativi   
    */
 template <typename T>
-void printdef(sparse_matrix<T> smatrix, unsigned int n, unsigned int m){
-  for(unsigned int i = 0; i < n; i++){
-    for(unsigned int j = 0; j < m; j++){
+void printdef(sparse_matrix<T> smatrix, int n, int m){
+  if(n < 0 || m < 0)
+    NegativeIndexSparseMatrixException();
+  for(int i = 0; i < n; i++){
+    for(int j = 0; j < m; j++){
       std::cout << smatrix(i, j) << " ";
     }
     std::cout << std::endl;
@@ -723,7 +741,7 @@ std::ostream &operator<<(std::ostream &os,
   // evito overflow se provo a stampare il nulla
   if(smatrix.get_head()==nullptr)
     return os;
-  unsigned int prevrow=i->i;
+  int prevrow=i->i;
   while(i!=ie) {
     if(i->i != prevrow)
       std::cout << std::endl;
@@ -746,11 +764,11 @@ std::ostream &operator<<(std::ostream &os,
  * @return conteggio dei valori che rispettano il predicato
  */
 template <typename T, typename P>
-unsigned int evaluate(const sparse_matrix<T> &smatrix, P pred) {
+int evaluate(const sparse_matrix<T> &smatrix, P pred) {
 
   typename sparse_matrix<T>::const_iterator i, ie;
-  unsigned int count = 0;
-  if( smatrix.get_head()==nullptr) return count;
+  int count = 0;
+  if(smatrix.get_head()==nullptr) return count;
   i = smatrix.begin();
   ie = smatrix.end();
 	

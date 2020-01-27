@@ -22,6 +22,11 @@ struct is_defaultf {
   }
 };
 
+struct pointxMax {
+  bool operator()(point p) const {
+    return p.a < p.b;
+  }
+};
 typedef sparse_matrix<int> smatrixi;
 typedef sparse_matrix<std::string> smatrixs;
 typedef sparse_matrix<point> smatrixp;
@@ -43,12 +48,14 @@ void test_fondamentali(){
       }
     }
   }
+  std::cout << floatNM(1,2);
+  //floatNM.add(-4, -3, -3);
   
   std::cout << "\ntest stampa matrice float con accesso mediante operator()\n";
   printdef(floatNM, floatNM.get_max_row(), floatNM.get_max_column());
   
   positive pos;
-  unsigned int count = evaluate(floatNM, pos);
+  int count = evaluate(floatNM, pos);
   std::cout << "\ntest evaluate (numero positivi) matrice float \n";
   std::cout << count << " = " << 2 << "\n";
   std::cout << "\ntest stampa matrice float con accesso mediante iteratore\n";
@@ -72,6 +79,7 @@ void test_fondamentali(){
   std::cout << "\ntest assegnamento\n";
   smatrixf floatNM2 = floatNM;
   printdef(floatNM2, floatNM2.get_max_row(), floatNM2.get_max_column());
+  
 }
 
 void test_costante(const smatrixi costante){
@@ -81,15 +89,37 @@ void test_costante(const smatrixi costante){
   positive pos;
   std::cout << "valori accettabili: " << evaluate(costante, pos) << "\n";
 }
+
+void test_point(){
+  std::cout << "\ntest stampa matrice di point con iteratore\n";
+  smatrixp testp(point(0,0));
+  testp.add(point(1,1), 2, 2);
+  testp.add(point(1,2), 1, 2);
+  testp.add(point(2,7), 0, 1);
+  testp.add(point(0,0), 1, 5);
+  testp.add(point(5,4), 200, 4000);
+  smatrixp::iterator ip,iep;
+  for(ip=testp.begin(), iep=testp.end(); ip!=iep; ip++)
+    std::cout << ip->value.a << ", " << ip->value.b << std::endl;
+  std::cout << "\ntest stampa matrice di point assegnata\n";
+  smatrixp testpp = testp;
+  testp.clear();
+  for(ip=testpp.begin(), iep=testpp.end(); ip!=iep; ip++)
+    std::cout << ip->value.a << ", " << ip->value.b << std::endl;
+  pointxMax max;
+  std::cout << "valori accettabili: " << evaluate(testpp, max) << " = 2\n";
+  testpp.clear();
+}
 int main(){
-  /*smatrixi test(0);
+  smatrixi test(0);
   //std::cout << test.get_default_value() << "\n";
   test.add(3, 2, 2);
   test.add(1, 1, 2);
   test.add(5, 0, 1);
-  test.add(7, 1, 1);
-  test.add(8, 1, 1);
-  test.add(-90, 830, 10);
+  test.add(18, 3, 3);
+  test.add(8, 3, 3);
+  test.print();
+  /*test.add(-90, 830, 10);
   test.add(100, 10, 80);
   test.add(99, 22, 76);
   test.add(1, 10, 20000);
@@ -177,5 +207,6 @@ int main(){
   test_fondamentali();
   smatrixi costante(0);
   test_costante(costante);
+  test_point();
   return 0;
 }

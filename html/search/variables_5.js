@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['i',['i',['../classsparse__matrix_1_1node.html#a67b177e3f30aabef9a8591a46ffbb331',1,'sparse_matrix::node']]]
+  ['i',['i',['../classsparse__matrix_1_1node.html#aa0703dd59395fb85969d7fd6a013d7bd',1,'sparse_matrix::node']]]
 ];

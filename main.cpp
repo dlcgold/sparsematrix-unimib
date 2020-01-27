@@ -1,32 +1,103 @@
 #include <iostream>
 #include <string>
+#include <cassert>
 #include "sparsematrix.hpp"
+
+
 struct point{
   int a;
   int b;
   point(int xx, int yy) : a(xx), b(yy) {}
 };
+
+struct positive {
+  bool operator()(int a) const {
+    return a>0;
+  }
+};
+
+struct is_defaultf {
+  bool operator()(float a) const {
+    return a==0.;
+  }
+};
+
 typedef sparse_matrix<int> smatrixi;
 typedef sparse_matrix<std::string> smatrixs;
 typedef sparse_matrix<point> smatrixp;
+typedef sparse_matrix<float> smatrixf;
 
+
+void test_fondamentali(){
+  std::cout << "test matrice float 3x3 (valore default 0)\n";
+  smatrixf floatNM(0, 3, 3);
+  
+  for(int i = 0; i < 3; i++){
+    for(int j = 0; j < 3; j++){
+      if(i != j){
+        if(j != 0 ){
+	  floatNM.add((float)(i+j+7) / (-1 * j * 3), i, j);
+	}else{
+	  floatNM.add(i + (j * (-1)), i, j);
+	}
+      }
+    }
+  }
+  
+  std::cout << "\ntest stampa matrice float con accesso mediante operator()\n";
+  printdef(floatNM, floatNM.get_max_row(), floatNM.get_max_column());
+  
+  positive pos;
+  unsigned int count = evaluate(floatNM, pos);
+  std::cout << "\ntest evaluate (numero positivi) matrice float \n";
+  std::cout << count << " = " << 2 << "\n";
+  std::cout << "\ntest stampa matrice float con accesso mediante iteratore\n";
+  smatrixf::iterator i, ie;
+  for(i = floatNM.begin(), ie= floatNM.end(); i!=ie; i++){
+    std::cout << i->value << std::endl;
+  }
+  std::cout << "\ntest cast da matrice float a matrice di interi\n";
+  smatrixi interaNM(floatNM);
+  std::cout << "\ntest stampa matrice intera con accesso mediante operator()\n";
+  printdef(interaNM, interaNM.get_max_row(), interaNM.get_max_column());
+  
+  count = evaluate(interaNM, pos);
+  std::cout << "\ntest evaluate (numero positivi) matrice intera \n";
+  std::cout << count << " = " << 2 << "\n";
+  std::cout << "\ntest stampa matrice intera con accesso mediante iteratore\n";
+  smatrixi::iterator iu, ieu;
+  for(iu = interaNM.begin(), ieu = interaNM.end(); iu!=ieu; iu++){
+    std::cout << iu->value << std::endl;
+  }
+  std::cout << "\ntest assegnamento\n";
+  smatrixf floatNM2 = floatNM;
+  printdef(floatNM2, floatNM2.get_max_row(), floatNM2.get_max_column());
+}
+
+void test_costante(const smatrixi costante){
+  std::cout << "\ntest stampa matrice costante\n";
+  std::cout << costante << std::endl;
+  std::cout << "\ntest evaluate matrice costante\n";
+  positive pos;
+  std::cout << "valori accettabili: " << evaluate(costante, pos) << "\n";
+}
 int main(){
-  smatrixi test(0);
+  /*smatrixi test(0);
   //std::cout << test.get_default_value() << "\n";
   test.add(3, 2, 2);
   test.add(1, 1, 2);
   test.add(5, 0, 1);
   test.add(7, 1, 1);
   test.add(8, 1, 1);
-  test.add(90, 830, 10);
+  test.add(-90, 830, 10);
   test.add(100, 10, 80);
   test.add(99, 22, 76);
   test.add(1, 10, 20000);
-  test.add(1, 30, 20000);
+  test.add(-1, 30, 20000);
   test.add(54, 1, 4);
   test.add(42, 3, 1);
   test.add(1, 0, 1);
-  test.add(67, 20, 0);
+  test.add(-67, 20, 0);
   test.add(1, 0, 0);
   test.add(2, 0, 2);
   test.add(3, 0, 0);
@@ -39,10 +110,10 @@ int main(){
 
   smatrixi copy(test);
   test.print();
-  //test.clear();
   
-  std::cout << "print di copy\n";
-  //copy.print();
+  
+  std::cout << "\nprint di copy\n";
+  copy.print();
   std::cout << std::endl;
   smatrixi::iterator i,ie;
   for(i=test.begin(), ie=test.end(); i!=ie; i++)
@@ -54,8 +125,11 @@ int main(){
  
   std::cout << test(1, 2) << " " << test(45, 42) << "\n";
   test.print();
+  positive predPos;
+  int countPositive = evaluate(test, predPos);
+  std::cout << "ho " << countPositive << " numeri positivi\n";
   test.clear();
-  std::cout << "numero elementi after clear: "<<  test.get_size() << "\n";
+  std::cout << "numero elementi after clear: "<<  test.get_size() << "\n";*/
   /*
   for(i=copy.begin(), ie=copy.end(); i!=ie; i++)
     i->value += 1;
@@ -84,5 +158,24 @@ int main(){
   for(ip=test3.begin(), iep=test3.end(); ip!=iep; ip++)
     std::cout << ip->value.a << ", " << ip->value.b << std::endl;
   test3.clear();*/
+  /*smatrixf test4(0.);
+  test4.add(4.6, 0, 3);
+  test4.add(4.4, 4, 3);
+  test4.add(76, 67, 3);
+  test4.add(3., 0, 375);
+  test4.add(5.0, 220, 23);
+  test4.print();
+  std::cout << test4 << std::endl;
+  smatrixf::iterator ip, iep;
+  for(ip=test4.begin(), iep=test4.end(); ip!=iep; ip++)
+    std::cout << ip->value<< std::endl;
+   smatrixi test5(test4);
+     std::cout << test5 << std::endl;
+  is_defaultf defF;
+  std::cout << "ho " << evaluate(test4, defF) << " elementi di default";*/
+
+  test_fondamentali();
+  smatrixi costante(0);
+  test_costante(costante);
   return 0;
 }

@@ -10,6 +10,13 @@ struct point{
   point(int xx, int yy) : a(xx), b(yy) {}
 };
 
+template<typename T>
+struct element{
+  T value;
+  int a;
+  int b;
+};
+
 struct positive {
   bool operator()(int a) const {
     return a>0;
@@ -83,8 +90,10 @@ void test_fondamentali(){
 
   smatrixf::iterator testBegin;
   testBegin = floatNM.begin();
-
-  std::cout << testBegin->value;
+  
+  
+ 
+  
   
 }
 

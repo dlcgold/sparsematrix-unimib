@@ -424,14 +424,19 @@ public:
     if((x < max_row) && (y < max_column)){
       node *current = head;
       T& value = default_value;
-    
-      while(current != nullptr) {
-	if(current->i == x && current->j == y){
-	  return current->value;
-	}
+
+      // come per la add avanzo fino a che non ho problemi
+      while(current->next != nullptr &&
+	    ((current->next->i == x && current->next->j <= y)
+	     || (current->next->i < x))) {
+	
 	current = current->next;
       }
-      return value;
+      if(current->i == x && current->j == y){
+	return current->value;
+      }else{
+	return value;
+      }
     }else{
       throw IndexOutOfBoundsException();
     }

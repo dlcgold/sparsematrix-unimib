@@ -213,10 +213,11 @@ implementato l'overload di \texttt{operator()}, che permette l'accesso
 ad un determinato valore di una cella mediante i due indici. Dato che
 da specifica deve avvenire la restituzione del valore di default, nel
 caso in cui si chieda il valore di una cella non indicizzata nella
-nostra matrice sparsa, si procede iterando nella matrice sparsa e, se
-si incontra il \texttt{node} con indici uguali a quelli richiesti se
-ne restituisce il valore, altrimenti si restituisce il valore di
-default.\\
+nostra matrice sparsa, si procede iterando nella matrice sparsa come
+nel caso della \texttt{add} fino ad ottenere una condizione d'arresto e, se
+si incontra il \texttt{node} con indici uguali a quelli richiesti in
+uscita dal ciclo se ne restituisce il valore, altrimenti si
+restituisce il valore di default.\\
 Infine viene implementata una funzione gloable
 \texttt{evaluate(sparse\_matrix, predicato)} che conta il numero di
 elementi nella matrice che soddifano il predicato (considerando anche

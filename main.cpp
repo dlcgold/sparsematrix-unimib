@@ -79,11 +79,17 @@ void test_fondamentali(){
   std::cout << "\ntest assegnamento\n";
   smatrixf floatNM2 = floatNM;
   printdef(floatNM2, floatNM2.get_max_row(), floatNM2.get_max_column());
+  std::cout << "\ntest assegnamento con iteratore\n";
+
+  smatrixf::iterator testBegin;
+  testBegin = floatNM.begin();
+
+  std::cout << testBegin->value;
   
 }
 
 void test_costante(const smatrixi costante){
-  std::cout << "\ntest stampa matrice costante\n";
+  std::cout << "\n\ntest stampa matrice costante\n";
   std::cout << costante << std::endl;
   std::cout << "\ntest evaluate matrice costante\n";
   positive pos;

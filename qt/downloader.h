@@ -1,31 +1,50 @@
 #ifndef DOWNLOADER_H
 #define DOWNLOADER_H
 
-#include <QObject>
+#include <QWidget>
+#include <QDialog>
 #include <QNetworkAccessManager>
 #include <QNetworkRequest>
 #include <QNetworkReply>
 #include <QUrl>
-#include <QDateTime>
-#include <QFile>
-#include <QDebug>
+#include <QtDebug>
+QT_BEGIN_NAMESPACE
+namespace Ui { class downloader; }
+QT_END_NAMESPACE
 
-
-class Downloader : public QObject
+class downloader : public QWidget
 {
-  Q_OBJECT
- public:
-  explicit Downloader(QObject *parent = 0);
+    Q_OBJECT
 
-  void doDownload(char* const url);
+public:
+    downloader(QWidget *parent = nullptr);
+    ~downloader();
+public:
+    void startRequest(QUrl url);
+private slots:
+    void on_analyzeButton_clicked();
 
- signals:
+/*    void on_quitButton_clicked();
 
-  public slots:
-   void replyFinished (QNetworkReply *reply);
+    void on_urlEdit_returnPressed();
+*/
+    // slot for readyRead() signal
+    void httpReadyRead();
+/*
+    // slot for finished() signal from reply
+    void httpDownloadFinished();
 
- private:
-   QNetworkAccessManager *manager;
+    // slot for downloadProgress()
+    void updateDownloadProgress(qint64, qint64);
+
+    void enableDownloadButton();
+    void cancelDownload();*/
+private:
+    Ui::downloader *ui;
+    QUrl url;
+    QNetworkAccessManager *manager;
+    QNetworkReply *reply;
+    QString text;
 
 };
-#endif
+#endif // DOWNLOADER_H

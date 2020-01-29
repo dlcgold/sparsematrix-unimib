@@ -8,43 +8,43 @@
 #include <QNetworkReply>
 #include <QUrl>
 #include <QtDebug>
+#include <QStyle>
+#include <QDesktopWidget>
+
 QT_BEGIN_NAMESPACE
-namespace Ui { class downloader; }
+namespace Ui {
+  class downloader;
+}
 QT_END_NAMESPACE
 
-class downloader : public QWidget
-{
-    Q_OBJECT
+
+class downloader : public QWidget {
+  Q_OBJECT
 
 public:
-    downloader(QWidget *parent = nullptr);
-    ~downloader();
+  downloader(QWidget *parent = nullptr);
+  ~downloader();
 public:
-    void startRequest(QUrl url);
+  void startRequest(QUrl url);
+
+
 private slots:
-    void on_analyzeButton_clicked();
+  void on_analyzeButton_clicked();
 
-/*    void on_quitButton_clicked();
+  // slot for readyRead() signal
+  void httpReadyRead();
 
-    void on_urlEdit_returnPressed();
-*/
-    // slot for readyRead() signal
-    void httpReadyRead();
-/*
-    // slot for finished() signal from reply
-    void httpDownloadFinished();
+  // slot for finished() signal from reply
+  void httpDownloadFinished();
 
-    // slot for downloadProgress()
-    void updateDownloadProgress(qint64, qint64);
-
-    void enableDownloadButton();
-    void cancelDownload();*/
+  void enableAnalyzeButton();
+  
 private:
-    Ui::downloader *ui;
-    QUrl url;
-    QNetworkAccessManager *manager;
-    QNetworkReply *reply;
-    QString text;
+  Ui::downloader *ui;
+  QUrl url;
+  QNetworkAccessManager *manager;
+  QNetworkReply *reply;
+  QByteArray text;
 
 };
 #endif // DOWNLOADER_H

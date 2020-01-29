@@ -513,6 +513,7 @@ public:
     // override assegnamento
     iterator& operator=(const iterator &other) {
       element = other.element;
+      
       return *this;
     }
 
@@ -521,8 +522,9 @@ public:
 
     // ovveride accesso
     node& operator*() const{
-      
+      //elem ret = elem(element->value, element->i, element->j);
       return element;
+      
     }
     node* operator->() const{
       

@@ -10,12 +10,12 @@ struct point{
   point(int xx, int yy) : a(xx), b(yy) {}
 };
 
-// template<typename T>
-// struct element{
-//   T value;
-//   int a;
-//   int b;
-// };
+template<typename T>
+struct element{
+  T value;
+  int a;
+  int b;
+};
 
 struct positive {
   bool operator()(int a) const {
@@ -67,13 +67,8 @@ void test_fondamentali(){
   std::cout << count << " = " << 2 << "\n";
   std::cout << "\ntest stampa matrice float con accesso mediante iteratore\n";
   smatrixf::iterator i, ie;
-  ie = floatNM.end();
-  i = floatNM.begin();
-  ie = i;
-  std::cout << ie->value<< "\n";
-  std::cout << typeid(i).name() << "\n";
-  for(i = floatNM.begin(), ie = floatNM.end(); i!=ie; i++){
-    std::cout << i->value << std::endl;
+  for(i = floatNM.begin(), ie= floatNM.end(); i!=ie; i++){
+    std::cout << i->v << std::endl;
   }
   std::cout << "\ntest cast da matrice float a matrice di interi\n";
   smatrixi interaNM(floatNM);
@@ -86,7 +81,7 @@ void test_fondamentali(){
   std::cout << "\ntest stampa matrice intera con accesso mediante iteratore\n";
   smatrixi::iterator iu, ieu;
   for(iu = interaNM.begin(), ieu = interaNM.end(); iu!=ieu; iu++){
-    std::cout << iu->value << std::endl;
+    std::cout << iu->v << std::endl;
   }
   std::cout << "\ntest assegnamento\n";
   smatrixf floatNM2 = floatNM;
@@ -95,7 +90,7 @@ void test_fondamentali(){
 
   smatrixf::iterator testBegin;
   testBegin = floatNM.begin();
-  std::cout << testBegin->value << "\n";
+  
   
  
   
@@ -120,12 +115,12 @@ void test_point(){
   testp.add(point(5,4), 200, 4000);
   smatrixp::iterator ip,iep;
   for(ip=testp.begin(), iep=testp.end(); ip!=iep; ip++)
-    std::cout << ip->value.a << ", " << ip->value.b << std::endl;
+    std::cout << ip->v.a << ", " << ip->v.b << std::endl;
   std::cout << "\ntest stampa matrice di point assegnata\n";
   smatrixp testpp = testp;
   testp.clear();
   for(ip=testpp.begin(), iep=testpp.end(); ip!=iep; ip++)
-    std::cout << ip->value.a << ", " << ip->value.b << std::endl;
+    std::cout << ip->v.a << ", " << ip->v.b << std::endl;
   pointxMax max;
   std::cout << "valori accettabili: " << evaluate(testpp, max) << " = 2\n";
   testpp.clear();

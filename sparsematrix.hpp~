@@ -113,25 +113,25 @@ private:
    * @brief elemo che rappresenta una cella della matrice sparsa
    *
    */
-  class node{
+  class element{
   private:
     /**
      * @brief puntatore privato all'elemo successivo
      *
      */
-    node *next;
+    element *next;
     
   public:
-    struct element{
+    struct data{
       T v;
       const int x;
       const int y;
-      element(const T &value, const int i, const int j): v(value), x(i), y(j){}
-      friend class node;
-      ~element(){}
+      data(const T &value, const int i, const int j): v(value), x(i), y(j){}
+      friend class element;
+      ~data(){}
     };
     
-    element *ret;
+    data *ret;
     
     /**
      * @brief valore contenuto nella cella, modificabile
@@ -155,7 +155,7 @@ private:
      * @brief costruttore di default dell'elemo
      *
      */
-    // node(): next(nullptr){}
+    // element(): next(nullptr){}
 
     /**
      * @brief costruttore dell'elemo senza elemo successivo
@@ -164,17 +164,17 @@ private:
      * @param x indice di riga della cella
      * @param y indice di colonna della cella
      */
-    //node(const T &v, const int x, const int y): next(nullptr), value(v),
+    //element(const T &v, const int x, const int y): next(nullptr), value(v),
     //	i(x), j(y){}
-    node(const T &v, const int x, const int y): next(nullptr){
-     ret = new element(v, x, y);
+    element(const T &v, const int x, const int y): next(nullptr){
+     ret = new data(v, x, y);
     }
     
     /**
      * @brief distruttore del nodo
      *
      */
-    ~node(){
+    ~element(){
       next = nullptr;
     }
 
@@ -189,7 +189,7 @@ private:
    * @brief puntatore alla testa
    * costruttore
    */
-  node *head;
+  element *head;
  
   /**
     * @brief numero totale di elemi inseriti
@@ -203,7 +203,7 @@ private:
    *
    * @param n elemo a partire dal quale si distrugge
    */
-  void recursive_clear(node *n){
+  void recursive_clear(element *n){
     if(n!=nullptr) {
       recursive_clear(n->next);
       delete n->ret;
@@ -240,7 +240,7 @@ public:
    *
    * @return testa di sparse_matrix
    */
-  const node* get_head() const {
+  const element* get_head() const {
     return head;
   }
 
@@ -331,7 +331,7 @@ public:
   }
 
   /*bool find(unsigned int i, unsigned int j) const{
-    node *current = head;
+    element *current = head;
     while(current != nullptr){
       if(current->i == i && current->j == j)
 	return true;
@@ -355,11 +355,11 @@ public:
       throw  NegativeIndexSparseMatrixException();
     if((i < max_row) && (j < max_column)){
       
-      node *elem = new node(v, i, j);
+      element *elem = new element(v, i, j);
       // std::cout << elem->ret->x;
       
       
-      node *temp = head;
+      element *temp = head;
       size++;
       if(head == nullptr){
 	head = elem;
@@ -418,7 +418,7 @@ public:
     
     int max_row_current = 0;
     int max_column_current = 0;
-    node *iter = head;
+    element *iter = head;
     while(iter != nullptr){
       if(iter->ret->x > max_row_current)
 	max_row_current = iter->ret->x;
@@ -437,7 +437,7 @@ public:
    *
    */
   void print(){
-    node *current = head;
+    element *current = head;
     while(current != nullptr){
       std::cout << current->ret->v << " in (" << current->ret->x << ", " << current->ret->y
 		<<")\n";
@@ -462,7 +462,7 @@ public:
     if(x < 0 || y < 0)
       throw  NegativeIndexSparseMatrixException();
     if((x < max_row) && (y < max_column)){
-      node *current = head;
+      element *current = head;
       T& value = default_value;
 
       // come per la add avanzo fino a che non ho problemi
@@ -514,7 +514,7 @@ public:
 					     max_column(other.max_column),
 					     size_row(0), size_column(0),
 					     head(nullptr), size(0) {
-    node *curr = other.head;
+    element *curr = other.head;
 
     try {
       while(curr != nullptr) {
@@ -538,16 +538,16 @@ public:
   
    
   private:
-    node *elem;
+    element *elem;
     friend class sparse_matrix;
     // costruttore per iterare su struttura dati
-    iterator(node *n) : elem(n) {}
+    iterator(element *n) : elem(n) {}
   public:
     // typedef std::forward_iterator_tag iterator_category;
-    // typedef node value_type;
+    // typedef element value_type;
     // typedef ptrdiff_t difference_type;
-    //typedef element* pointer;
-    //typedef element reference;
+    //typedef data* pointer;
+    //typedef data reference;
     
     //costruttori
     iterator() : elem(nullptr) {}
@@ -571,7 +571,7 @@ public:
     ~iterator() {}
 
     // ovveride accesso
-    typename node::element& operator*() const{
+    typename element::data& operator*() const{
       //elem ret = elem(elem->value, elem->i, elem->j);
       return elem->ret;
       
@@ -585,7 +585,7 @@ public:
       
     // }
     
-    typename node::element* operator->() const{
+    typename element::data* operator->() const{
       
       return &*elem->ret;
     }
@@ -648,18 +648,18 @@ public:
 
   class const_iterator{
   private:
-    const node *elem;
+    const element *elem;
     
     friend class sparse_matrix;
 
     // costruttore per iterare su struttura dati
-    const_iterator(node *n) : elem(n) {}
+    const_iterator(element *n) : elem(n) {}
   public:
     // typedef std::forward_iterator_tag iterator_category;
-    // typedef node value_type;
+    // typedef element value_type;
     // typedef ptrdiff_t difference_type;
-    // typedef node* pointer;
-    // typedef node& reference;
+    // typedef element* pointer;
+    // typedef element& reference;
     
     //costruttori
     const_iterator() : elem(nullptr) {}
@@ -675,11 +675,11 @@ public:
     ~const_iterator() {}
 
     // ovveride accesso
-    const typename node::element operator*() const{
+    const typename element::data operator*() const{
       
       return elem->ret;
     }
-    const typename node::element* operator->() const{
+    const typename element::data* operator->() const{
       
       return &*elem->ret;
     }

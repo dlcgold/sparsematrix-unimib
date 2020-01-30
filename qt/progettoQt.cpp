@@ -6,15 +6,23 @@
 
 
 
-
+/**
+ * @brief funzione per contare le parole
+ *
+ * @param sentence stringa in cui cercare le parole
+ *
+ * @return numberofwords numero di parole
+ */
 int countWords(std::string sentence) {
     int numberOfWords = 0;
-    size_t i;
+    unsigned int i;
 
     if (isalpha(sentence[0])) {
         numberOfWords++;
     }
 
+    // verifico che se ho una lettera che segue un carattere che non lo è
+    // ho trovato una parola
     for (i = 1; i < sentence.length(); i++) {
         if ((isalpha(sentence[i])) && (!isalpha(sentence[i-1]))) {
             numberOfWords++;
@@ -24,12 +32,12 @@ int countWords(std::string sentence) {
     return numberOfWords;
 }
 
-
+/**
+ * @brief costruttore
+ */
 progettoQt::progettoQt(QWidget *parent)
     : QWidget(parent)
     , ui(new Ui::progettoQt) {
-    //ui->setupUi(parent->resize(30, 40));
-    //ui->setupUi(this);
 
     ui->setupUi(this);
     this->resize(270, 40);

@@ -41,12 +41,22 @@ class NoCastSparseMatrixException: public std::exception {
     }
 };
 
+/**
+ * @brief tentativo di lavorare su indici negativi
+ * 
+ * @return eccezione
+ */
 class NegativeIndexSparseMatrixException: public std::exception {
     virtual const char* what() const throw() {
         return "indice negativo";
     }
 };
 
+/**
+ * @brief tentativo di lavorare su dimensioni negative
+ * 
+ * @return eccezione
+ */
 class NegativeDimensionSparseMatrixException: public std::exception {
     virtual const char* what() const throw() {
         return "indice negativo";
@@ -57,6 +67,14 @@ class NegativeDimensionSparseMatrixException: public std::exception {
  *
  * @tparam T tipo dei valori della matrice
  */
+template <typename T>
+struct elemr{
+  T v;
+  const int x;
+  const int y;
+  elemr(T value, const int i, const int j): v(value), x(i), y(j){}
+};
+
 template <typename T>
 class sparse_matrix{
 private:
@@ -92,16 +110,16 @@ private:
   int size_column;
 
   /**
-   * @brief elemento che rappresenta una cella della matrice sparsa
+   * @brief elemo che rappresenta una cella della matrice sparsa
    *
    */
-  class node{
+  class element{
   private:
     /**
-     * @brief puntatore privato all'elemento successivo
+     * @brief puntatore privato all'elemo successivo
      *
      */
-    node *next;
+    element *next;
     
   public:
     /**
@@ -123,26 +141,26 @@ private:
     const int j;
     
     /**
-     * @brief costruttore di default dell'elemento
+     * @brief costruttore di default dell'elemo
      *
      */
-    // node(): next(nullptr){}
+    // element(): next(nullptr){}
 
     /**
-     * @brief costruttore dell'elemento senza elemento successivo
+     * @brief costruttore dell'elemo senza elemo successivo
      *
      * @param v valore della cella
      * @param x indice di riga della cella
      * @param y indice di colonna della cella
      */
-    node(const T &v, const int x, const int y): next(nullptr), value(v),
+    element(const T &v, const int x, const int y): next(nullptr), value(v),
 						i(x), j(y){}
 
     /**
      * @brief distruttore del nodo
      *
      */
-    ~node(){
+    ~element(){
       next = nullptr;
     }
 
@@ -157,21 +175,21 @@ private:
    * @brief puntatore alla testa
    * costruttore
    */
-  node *head;
+  element *head;
 
   /**
-    * @brief numero totale di elementi inseriti
+    * @brief numero totale di elemi inseriti
     *
     */
   int size;
 
   /**
-   * @brief distrugge gli elementi linkati a partire da un elemento
+   * @brief distrugge gli elemi linkati a partire da un elemo
    *
    *
-   * @param n elemento a partire dal quale si distrugge
+   * @param n elemo a partire dal quale si distrugge
    */
-  void recursive_clear(node *n){
+  void recursive_clear(element *n){
     if(n!=nullptr) {
       recursive_clear(n->next);	
       delete n;
@@ -201,11 +219,11 @@ public:
   }
 
   /**
-   * @brief getter dell'elemento di testa
+   * @brief getter dell'elemo di testa
    *
    * @return testa di sparse_matrix
    */
-  const node* get_head() const {
+  const element* get_head() const {
     return head;
   }
 
@@ -237,7 +255,7 @@ public:
   }
 
   /**
-   * @brief getter del numero di elementi
+   * @brief getter del numero di elemi
    *
    */
   int get_size() const {
@@ -296,7 +314,7 @@ public:
   }
 
   /*bool find(unsigned int i, unsigned int j) const{
-    node *current = head;
+    element *current = head;
     while(current != nullptr){
       if(current->i == i && current->j == j)
 	return true;
@@ -306,7 +324,7 @@ public:
   }*/
   
   /**
-   * @brief aggiunta di un elemento e calcolo righe e colonne attuali
+   * @brief aggiunta di un elemo e calcolo righe e colonne attuali
    * 
    * @param v valore da aggiungere
    * @param i indice di riga della cella in cui aggiungere il valore
@@ -320,8 +338,8 @@ public:
       throw  NegativeIndexSparseMatrixException();
     if((i < max_row) && (j < max_column)){
       
-      node *elem = new node(v, i, j);
-      node *temp = head;
+      element *elem = new element(v, i, j);
+      element *temp = head;
       size++;
       if(head == nullptr){
 	head = elem;
@@ -378,7 +396,7 @@ public:
     // conto massima riga e colonna
     int max_row_current = 0;
     int max_column_current = 0;
-    node *iter = head;
+    element *iter = head;
     while(iter != nullptr){
       if(iter->i > max_row_current)
 	max_row_current = iter->i;
@@ -393,11 +411,11 @@ public:
   }
 
   /**
-   * @brief stampa lineare degli elementi
+   * @brief stampa lineare degli elemi
    *
    */
   void print(){
-    node *current = head;
+    element *current = head;
     while(current != nullptr){
       std::cout << current->value << " in (" << current->i << ", " << current->j
 		<<")\n";
@@ -407,7 +425,7 @@ public:
   }
   
   /**
-   * @brief overload dell'operatore () per accedere all'elemento
+   * @brief overload dell'operatore () per accedere all'elemo
    *
    * @param x indice di riga della cella voluta
    * @param y indice di colonna della cella voluta
@@ -422,7 +440,7 @@ public:
     if(x < 0 || y < 0)
       throw  NegativeIndexSparseMatrixException();
     if((x < max_row) && (y < max_column)){
-      node *current = head;
+      element *current = head;
       T& value = default_value;
 
       // come per la add avanzo fino a che non ho problemi
@@ -472,7 +490,7 @@ public:
 					     max_column(other.max_column),
 					     size_row(0), size_column(0),
 					     head(nullptr), size(0) {
-    node *curr = other.head;
+    element *curr = other.head;
 
     try {
       while(curr != nullptr) {
@@ -492,66 +510,106 @@ public:
    * @brief iteratore (in lettura e scrittura) per sparse_matrix
    */
   class iterator{
+  
+   
   private:
-    node *element;
+    element *elem;
     
     friend class sparse_matrix;
 
     // costruttore per iterare su struttura dati
-    iterator(node *n) : element(n) {}
+    iterator(element *n) : elem(n) {}
   public:
     // typedef std::forward_iterator_tag iterator_category;
-    // typedef node value_type;
+    // typedef element value_type;
     // typedef ptrdiff_t difference_type;
-    // typedef node* pointer;
-    // typedef node& reference;
+    // typedef element* pointer;
+    // typedef element& reference;
     
     //costruttori
-    iterator() : element(nullptr) {}
-    iterator(const iterator &other) : element(other.element) {}
+    iterator() : elem(nullptr) {}
+    iterator(const iterator &other) : elem(other.elem) {}
 
     // override assegnamento
     iterator& operator=(const iterator &other) {
-      element = other.element;
+      elem = other.elem;
       
       return *this;
     }
 
+    // elem& operator=(const iterator &other) {
+    //   elem = other.elem;
+     
+    //   elem *ret = new elem(elem->value, elem->i, elem->j);
+      
+    //   return *ret;
+    // }
     //distruttore
     ~iterator() {}
 
     // ovveride accesso
-    node& operator*() const{
-      //elem ret = elem(element->value, element->i, element->j);
-      return element;
+    element& operator*() const{
+      //elem ret = elem(elem->value, elem->i, elem->j);
+      return elem;
       
     }
-    node* operator->() const{
+
+    // elem& operator*() const{
+    //   //elem ret = elem(elem->value, elem->i, elem->j);
+    //       elem *ret = new elem(elem->value, elem->i, elem->j);
+
+    //   return ret;
       
-      return &*element;
+    // }
+    
+    element* operator->() const{
+      
+      return &*elem;
     }
+
+    //  elem* operator->() const{
+    //       elem *ret = new elem(elem->value, elem->i, elem->j);
+
+    //   return &*ret;
+    // }
     
     // override post e pre incremento
-    node& operator++(int) {
+     element& operator++(int) {
       iterator tmp(*this);
-      element = element->next;
-      return *element;
+      elem = elem->next;
+      return *elem;
     }
+
+    // elem& operator++(int) {
+    //   iterator tmp(*this);
+    //   elem = elem->next;
+    //   elem *ret = new elem(elem->value, elem->i, elem->j);
+
+    //   return *ret;
+    // }
     
-    node& operator++() {
-      // element* res;
-      element = element->next;
-      return *element;  
+    element& operator++() {
+      // elem* res;
+      elem = elem->next;
+      return *elem;  
     }
-    
+
+    // elem& operator++() {
+    //   // elem* res;
+    //   elem = elem->next;
+    //   elem *ret = new elem(elem->value, elem->i, elem->j);
+
+    //   return *ret;  
+    // }
     // override uguaglianza
+    
     bool operator==(const iterator &other) const {
-      return (element->i == other->i && element->j == other->j);
+      return (elem->i == other->i && elem->j == other->j);
     }
         
     bool operator!=(const iterator &other) const {
       //return (iter->i != other->i && iter->j != other->j);
-      return (element != other.element);
+      return (elem != other.elem);
     }
     
   
@@ -564,26 +622,26 @@ public:
 
   class const_iterator{
   private:
-    const node *element;
+    const element *elem;
     
     friend class sparse_matrix;
 
     // costruttore per iterare su struttura dati
-    const_iterator(node *n) : element(n) {}
+    const_iterator(element *n) : elem(n) {}
   public:
     // typedef std::forward_iterator_tag iterator_category;
-    // typedef node value_type;
+    // typedef element value_type;
     // typedef ptrdiff_t difference_type;
-    // typedef node* pointer;
-    // typedef node& reference;
+    // typedef element* pointer;
+    // typedef element& reference;
     
     //costruttori
-    const_iterator() : element(nullptr) {}
-    const_iterator(const const_iterator &other) : element(other.element) {}
+    const_iterator() : elem(nullptr) {}
+    const_iterator(const const_iterator &other) : elem(other.elem) {}
 
     // override assegnamento
     const_iterator& operator=(const const_iterator &other) {
-      element = other.element;
+      elem = other.elem;
       return *this;
     }
 
@@ -591,56 +649,56 @@ public:
     ~const_iterator() {}
 
     // ovveride accesso
-    const node& operator*() const{
+    const element& operator*() const{
       
-      return element;
+      return elem;
     }
-    const node* operator->() const{
+    const element* operator->() const{
       
-      return &*element;
+      return &*elem;
     }
     
     // override post e pre incremento
-    const node& operator++(int) {
+    const element& operator++(int) {
       iterator tmp(*this);
-      element = element->next;
-      return *element;
+      elem = elem->next;
+      return *elem;
     }
     
-    const node& operator++() {
-      // element* res;
-      element = element->next;
-      return *element;  
+    const element& operator++() {
+      // elem* res;
+      elem = elem->next;
+      return *elem;  
     }
     
     // override uguaglianza
     bool operator==(const const_iterator &other) const {
-      return (element->i == other->i && element->j == other->j);
+      return (elem->i == other->i && elem->j == other->j);
     }
         
     bool operator!=(const const_iterator &other) const {
       //return (iter->i != other->i && iter->j != other->j);
-      return element != other.element;
+      return elem != other.elem;
     }
 
     friend class iterator;
     // Uguaglianza
     bool operator==(const iterator &other) const {
-      return element == other.element;
+      return elem == other.elem;
     }
 
     // Diversita'
     bool operator!=(const iterator &other) const {
-      return  element != other.element;
+      return  elem != other.elem;
     }
 
     // Costruttore di conversione iterator -> const_iterator
-    const_iterator(const iterator &other) : element(other.element) {
+    const_iterator(const iterator &other) : elem(other.elem) {
     }
 
     // Assegnamento di un iterator ad un const_iterator
     const_iterator &operator=(const iterator &other) {
-      element = other.element;
+      elem = other.elem;
       return *this;
     }
 
@@ -650,6 +708,7 @@ public:
    * @brief iteratore alla testa della sparse_matrix
    */
   iterator begin() {
+    // elem* ret = new elem(head->value, head->i, head->j);
     return iterator(head);
   }
 

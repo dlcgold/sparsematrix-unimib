@@ -3,5 +3,5 @@ digraph "Graphical Class Hierarchy"
   edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
   node [fontname="Helvetica",fontsize="10",shape=record];
   rankdir="LR";
-  Node0 [label="sparse_matrix\< T \>",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classsparse__matrix.html",tooltip="Classe sparse_matrix per matrice sparsa. "];
+  Node0 [label="pointxMax",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$structpointx_max.html"];
 }

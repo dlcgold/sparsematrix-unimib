@@ -5,10 +5,17 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.13"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Sparse Matrix: Elementi dei file</title>
+<title>Progetto Sparsematrix: Elementi dei file</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+</script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -21,8 +28,9 @@
  <tbody>
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">Sparse Matrix
+   <div id="projectname">Progetto Sparsematrix
    </div>
+   <div id="projectbrief">Progetto del corso Programmazione C++, Gennaio 2020, Davide Cozzi, 829827 d.cozzi@campus.unimib.it</div>
   </td>
  </tr>
  </tbody>
@@ -43,6 +51,20 @@ $(function() {
 </script>
 <div id="main-nav"></div>
 </div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('globals.html','');});
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -63,8 +85,7 @@ $(function() {
 : <a class="el" href="sparsematrix_8hpp.html#a584011e81c7dac0f1b38aa39c1c19b10">sparsematrix.hpp</a>
 </li>
 <li>main()
-: <a class="el" href="main_01_07copy_011_08_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4">main (copy 1).cpp</a>
-, <a class="el" href="main_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4">main.cpp</a>
+: <a class="el" href="main_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4">main.cpp</a>
 </li>
 <li>operator&lt;&lt;()
 : <a class="el" href="sparsematrix_8hpp.html#afec160ad1cc407cadf395cb58cc1a522">sparsematrix.hpp</a>
@@ -73,20 +94,16 @@ $(function() {
 : <a class="el" href="sparsematrix_8hpp.html#a26dc06f256bf0d8126beaf01d0a04cee">sparsematrix.hpp</a>
 </li>
 <li>smatrixf
-: <a class="el" href="main_01_07copy_011_08_8cpp.html#ac659506577a5f55347983c7401103c0f">main (copy 1).cpp</a>
-, <a class="el" href="main_8cpp.html#ac659506577a5f55347983c7401103c0f">main.cpp</a>
+: <a class="el" href="main_8cpp.html#ac659506577a5f55347983c7401103c0f">main.cpp</a>
 </li>
 <li>smatrixi
-: <a class="el" href="main_01_07copy_011_08_8cpp.html#a6b9626d59e9ff310cc991a2f558febef">main (copy 1).cpp</a>
-, <a class="el" href="main_8cpp.html#a6b9626d59e9ff310cc991a2f558febef">main.cpp</a>
+: <a class="el" href="main_8cpp.html#a6b9626d59e9ff310cc991a2f558febef">main.cpp</a>
 </li>
 <li>smatrixp
-: <a class="el" href="main_01_07copy_011_08_8cpp.html#af059ac18f370bf39c83c2a3d9058976c">main (copy 1).cpp</a>
-, <a class="el" href="main_8cpp.html#af059ac18f370bf39c83c2a3d9058976c">main.cpp</a>
+: <a class="el" href="main_8cpp.html#af059ac18f370bf39c83c2a3d9058976c">main.cpp</a>
 </li>
 <li>smatrixs
-: <a class="el" href="main_01_07copy_011_08_8cpp.html#a717736943c16142f4ba76de28bb8425f">main (copy 1).cpp</a>
-, <a class="el" href="main_8cpp.html#a717736943c16142f4ba76de28bb8425f">main.cpp</a>
+: <a class="el" href="main_8cpp.html#a717736943c16142f4ba76de28bb8425f">main.cpp</a>
 </li>
 <li>test_costante()
 : <a class="el" href="main_8cpp.html#a2fe1bc86c7c7ee042ee2f250b39b9cfa">main.cpp</a>
@@ -99,11 +116,14 @@ $(function() {
 </li>
 </ul>
 </div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generato Lun 27 Gen 2020 18:24:10 per Sparse Matrix da &#160;<a href="http://www.doxygen.org/index.html">
-<img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.13
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">Generato da
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.13 </li>
+  </ul>
+</div>
 </body>
 </html>

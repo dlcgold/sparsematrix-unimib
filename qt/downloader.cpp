@@ -115,11 +115,14 @@ void downloader::httpReadyRead() {
 void downloader::httpDownloadFinished() {
 
   if(reply->error()){
-    QMessageBox reply;
-    reply.setText("<p align='center'>url errato</p");
+    QMessageBox replyError;
+    
+    replyError.setText("<p align='center'>url errato</p");
     ui->urlBox->setText("");
 
-    reply.exec();
+    replyError.exec();
+    replyError.deleteLater();
+
 
   }else{
 
@@ -137,10 +140,9 @@ void downloader::httpDownloadFinished() {
     ui->analyzeButton->move(ui->urlBox->size().width() +19,
 			    ui->analyzeButton->pos().y());
     // download finished normally
-    //qDebug() << QString::fromStdString(text.toStdString());
     std::string textstr = text.toStdString();
 
-    qDebug() << "lunghezza: " << text.size();
+    //qDebug() << "lunghezza: " << text.size();
     ui->textLabel->setText(text);
     int countPhrase = 0;
     int countChars = 0;
@@ -193,8 +195,15 @@ void downloader::httpDownloadFinished() {
     ui->paraLabel->setText(infoPara);
 
     reply->deleteLater();
+    manager->deleteLater();
+    infoPhrase.clear();
+    infoWord.clear();
+    infoChar.clear();
+    infoNoSpace.clear();
+    infoPara.clear();
     reply = 0;
     manager = 0;
+
     text = "";
     ui->analyzeButton->setEnabled(false);
 

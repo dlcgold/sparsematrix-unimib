@@ -5,10 +5,17 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.13"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Sparse Matrix: Riferimenti per la struct pointxMax</title>
+<title>Progetto Sparsematrix: Riferimenti per la struct pointxMax</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+</script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -21,8 +28,9 @@
  <tbody>
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">Sparse Matrix
+   <div id="projectname">Progetto Sparsematrix
    </div>
+   <div id="projectbrief">Progetto del corso Programmazione C++, Gennaio 2020, Davide Cozzi, 829827 d.cozzi@campus.unimib.it</div>
   </td>
  </tr>
  </tbody>
@@ -42,6 +50,21 @@ $(function() {
 });
 </script>
 <div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('structpointx_max.html','');});
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -56,7 +79,6 @@ $(function() {
 </iframe>
 </div>
 
-</div><!-- top -->
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Membri pubblici</a> &#124;
@@ -71,10 +93,7 @@ Membri pubblici</h2></td></tr>
 <tr class="memitem:a8adc3bf2be6c91d767be11ee8430668c"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structpointx_max.html#a8adc3bf2be6c91d767be11ee8430668c">operator()</a> (<a class="el" href="structpoint.html">point</a> p) const</td></tr>
 <tr class="separator:a8adc3bf2be6c91d767be11ee8430668c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<a name="details" id="details"></a><h2 class="groupheader">Descrizione dettagliata</h2>
-<div class="textblock">
-<p class="definition">Definizione alla linea <a class="el" href="main_8cpp_source.html#l00025">25</a> del file <a class="el" href="main_8cpp_source.html">main.cpp</a>.</p>
-</div><h2 class="groupheader">Documentazione delle funzioni membro</h2>
+<h2 class="groupheader">Documentazione delle funzioni membro</h2>
 <a id="a8adc3bf2be6c91d767be11ee8430668c"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a8adc3bf2be6c91d767be11ee8430668c">&#9670;&nbsp;</a></span>operator()()</h2>
 
@@ -98,22 +117,24 @@ Membri pubblici</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definizione alla linea <a class="el" href="main_8cpp_source.html#l00026">26</a> del file <a class="el" href="main_8cpp_source.html">main.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;                                 {</div><div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <span class="keywordflow">return</span> p.<a class="code" href="structpoint.html#ad547af59ea2414940abdbc9ef985e753">a</a> &lt; p.<a class="code" href="structpoint.html#ad2215fb25f631d5f4055fc6138306e7c">b</a>;</div><div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;  }</div><div class="ttc" id="structpoint_html_ad547af59ea2414940abdbc9ef985e753"><div class="ttname"><a href="structpoint.html#ad547af59ea2414940abdbc9ef985e753">point::a</a></div><div class="ttdeci">int a</div><div class="ttdef"><b>Definition:</b> <a href="main_01_07copy_011_08_8cpp_source.html#l00006">main (copy 1).cpp:6</a></div></div>
-<div class="ttc" id="structpoint_html_ad2215fb25f631d5f4055fc6138306e7c"><div class="ttname"><a href="structpoint.html#ad2215fb25f631d5f4055fc6138306e7c">point::b</a></div><div class="ttdeci">int b</div><div class="ttdef"><b>Definition:</b> <a href="main_01_07copy_011_08_8cpp_source.html#l00007">main (copy 1).cpp:7</a></div></div>
+<div class="fragment"><div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;                                 {</div><div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    <span class="keywordflow">return</span> p.<a class="code" href="structpoint.html#ad547af59ea2414940abdbc9ef985e753">a</a> &lt; p.<a class="code" href="structpoint.html#ad2215fb25f631d5f4055fc6138306e7c">b</a>;</div><div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;  }</div><div class="ttc" id="structpoint_html_ad547af59ea2414940abdbc9ef985e753"><div class="ttname"><a href="structpoint.html#ad547af59ea2414940abdbc9ef985e753">point::a</a></div><div class="ttdeci">int a</div><div class="ttdef"><b>Definition:</b> main.cpp:8</div></div>
+<div class="ttc" id="structpoint_html_ad2215fb25f631d5f4055fc6138306e7c"><div class="ttname"><a href="structpoint.html#ad2215fb25f631d5f4055fc6138306e7c">point::b</a></div><div class="ttdeci">int b</div><div class="ttdef"><b>Definition:</b> main.cpp:9</div></div>
 </div><!-- fragment -->
 </div>
 </div>
 <hr/>La documentazione per questa struct è stata generata a partire dal seguente file:<ul>
-<li><a class="el" href="main_8cpp_source.html">main.cpp</a></li>
+<li><a class="el" href="main_8cpp.html">main.cpp</a></li>
 </ul>
 </div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generato Lun 27 Gen 2020 18:24:10 per Sparse Matrix da &#160;<a href="http://www.doxygen.org/index.html">
-<img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.13
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="structpointx_max.html">pointxMax</a></li>
+    <li class="footer">Generato da
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.13 </li>
+  </ul>
+</div>
 </body>
 </html>

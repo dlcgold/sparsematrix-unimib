@@ -1,4 +1,6 @@
 var searchData=
 [
-  ['sparse_5fmatrix',['sparse_matrix',['../classsparse__matrix.html#ae113bb914d2c00cc0fad5051c9584212',1,'sparse_matrix::sparse_matrix(T dvalue)'],['../classsparse__matrix.html#af4da17fced2c074b1ad2111a900bfe50',1,'sparse_matrix::sparse_matrix(T dvalue, int row, int column)'],['../classsparse__matrix.html#a5b77defd06a5911cf8d7f4b2a658a1d9',1,'sparse_matrix::sparse_matrix(const sparse_matrix &amp;other)'],['../classsparse__matrix.html#a34c01d3cd832cad713619208512a739d',1,'sparse_matrix::sparse_matrix(const sparse_matrix&lt; Q &gt; &amp;other)']]]
+  ['_7econst_5fiterator',['~const_iterator',['../classsparse__matrix_1_1const__iterator.html#a19df9ab480099b277b8d998ac1a36126',1,'sparse_matrix::const_iterator']]],
+  ['_7eiterator',['~iterator',['../classsparse__matrix_1_1iterator.html#a0517e8d7304fba3fc5d0ba2250406c89',1,'sparse_matrix::iterator']]],
+  ['_7esparse_5fmatrix',['~sparse_matrix',['../classsparse__matrix.html#a376c1d4abca1efa1ffa3c346ea82036d',1,'sparse_matrix']]]
 ];

@@ -3,11 +3,5 @@ digraph "Graphical Class Hierarchy"
   edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
   node [fontname="Helvetica",fontsize="10",shape=record];
   rankdir="LR";
-  Node5 [label="exception",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
-  Node5 -> Node0 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node0 [label="IndexOutOfBoundsException",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classIndexOutOfBoundsException.html",tooltip="tentativo di lavorare su un cella fuori dalle dimensioni, se diciarate "];
-  Node5 -> Node7 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node7 [label="NoCastSparseMatrixException",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classNoCastSparseMatrixException.html",tooltip="tentativo di cast tra sparse_matrix fallito "];
-  Node5 -> Node8 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node8 [label="NoSparseMatrixException",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classNoSparseMatrixException.html",tooltip="tentativo di uso di sparse_matrix inesistente "];
+  Node0 [label="element\< T \>",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$structelement.html"];
 }

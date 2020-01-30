@@ -10,12 +10,12 @@ struct point{
   point(int xx, int yy) : a(xx), b(yy) {}
 };
 
-template<typename T>
-struct element{
-  T value;
-  int a;
-  int b;
-};
+// template<typename T>
+// struct element{
+//   T value;
+//   int a;
+//   int b;
+// };
 
 struct positive {
   bool operator()(int a) const {
@@ -67,7 +67,12 @@ void test_fondamentali(){
   std::cout << count << " = " << 2 << "\n";
   std::cout << "\ntest stampa matrice float con accesso mediante iteratore\n";
   smatrixf::iterator i, ie;
-  for(i = floatNM.begin(), ie= floatNM.end(); i!=ie; i++){
+  ie = floatNM.end();
+  i = floatNM.begin();
+  ie = i;
+  std::cout << ie->value<< "\n";
+  std::cout << typeid(i).name() << "\n";
+  for(i = floatNM.begin(), ie = floatNM.end(); i!=ie; i++){
     std::cout << i->value << std::endl;
   }
   std::cout << "\ntest cast da matrice float a matrice di interi\n";
@@ -90,7 +95,7 @@ void test_fondamentali(){
 
   smatrixf::iterator testBegin;
   testBegin = floatNM.begin();
-  
+  std::cout << testBegin->value << "\n";
   
  
   

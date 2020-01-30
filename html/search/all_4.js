@@ -1,6 +1,10 @@
 var searchData=
 [
-  ['element',['element',['../classsparse__matrix_1_1iterator.html#a70695df47f45af0d755c37bbdf62fe96',1,'sparse_matrix::iterator::element()'],['../classsparse__matrix_1_1const__iterator.html#a5f9a1407799667310a1d2741075450a0',1,'sparse_matrix::const_iterator::element()']]],
-  ['end',['end',['../classsparse__matrix.html#a7fbde155ed4c25b38b5005e7d83c6180',1,'sparse_matrix::end()'],['../classsparse__matrix.html#af5a6f5bb6ebd5ffd40933f346852bd75',1,'sparse_matrix::end() const']]],
-  ['evaluate',['evaluate',['../sparsematrix_8hpp.html#a584011e81c7dac0f1b38aa39c1c19b10',1,'sparsematrix.hpp']]]
+  ['get_5fdefault_5fvalue',['get_default_value',['../classsparse__matrix.html#a6251f1f94b86e04ac4a4fe59155ed826',1,'sparse_matrix']]],
+  ['get_5fhead',['get_head',['../classsparse__matrix.html#a49d501293976bd2aaf8ec6f48b5ceb9b',1,'sparse_matrix']]],
+  ['get_5fmax_5fcolumn',['get_max_column',['../classsparse__matrix.html#a899ce8b03ae09af0a610f7659d6ed228',1,'sparse_matrix']]],
+  ['get_5fmax_5frow',['get_max_row',['../classsparse__matrix.html#a3ac46ba6642d81e94d721a71279be7fb',1,'sparse_matrix']]],
+  ['get_5fsize',['get_size',['../classsparse__matrix.html#a867242aa8a3335165bd158682250e2db',1,'sparse_matrix']]],
+  ['get_5fsize_5fcolumn',['get_size_column',['../classsparse__matrix.html#aca943521574c4c5b5d9c73e6ea897e37',1,'sparse_matrix']]],
+  ['get_5fsize_5frow',['get_size_row',['../classsparse__matrix.html#ab6b17669a2fa27844d62948b6c5a0bc9',1,'sparse_matrix']]]
 ];

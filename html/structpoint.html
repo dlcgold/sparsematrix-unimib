@@ -5,10 +5,17 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.13"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Sparse Matrix: Riferimenti per la struct point</title>
+<title>Progetto Sparsematrix: Riferimenti per la struct point</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+</script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -21,8 +28,9 @@
  <tbody>
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">Sparse Matrix
+   <div id="projectname">Progetto Sparsematrix
    </div>
+   <div id="projectbrief">Progetto del corso Programmazione C++, Gennaio 2020, Davide Cozzi, 829827 d.cozzi@campus.unimib.it</div>
   </td>
  </tr>
  </tbody>
@@ -42,6 +50,21 @@ $(function() {
 });
 </script>
 <div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('structpoint.html','');});
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -56,7 +79,6 @@ $(function() {
 </iframe>
 </div>
 
-</div><!-- top -->
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Membri pubblici</a> &#124;
@@ -71,8 +93,6 @@ $(function() {
 Membri pubblici</h2></td></tr>
 <tr class="memitem:ae3ea6069972ff26050dc8469d4765a0a"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structpoint.html#ae3ea6069972ff26050dc8469d4765a0a">point</a> (int xx, int yy)</td></tr>
 <tr class="separator:ae3ea6069972ff26050dc8469d4765a0a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae3ea6069972ff26050dc8469d4765a0a"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structpoint.html#ae3ea6069972ff26050dc8469d4765a0a">point</a> (int xx, int yy)</td></tr>
-<tr class="separator:ae3ea6069972ff26050dc8469d4765a0a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Attributi pubblici</h2></td></tr>
@@ -81,12 +101,9 @@ Attributi pubblici</h2></td></tr>
 <tr class="memitem:ad2215fb25f631d5f4055fc6138306e7c"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structpoint.html#ad2215fb25f631d5f4055fc6138306e7c">b</a></td></tr>
 <tr class="separator:ad2215fb25f631d5f4055fc6138306e7c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<a name="details" id="details"></a><h2 class="groupheader">Descrizione dettagliata</h2>
-<div class="textblock">
-<p class="definition">Definizione alla linea <a class="el" href="main_01_07copy_011_08_8cpp_source.html#l00005">5</a> del file <a class="el" href="main_01_07copy_011_08_8cpp_source.html">main (copy 1).cpp</a>.</p>
-</div><h2 class="groupheader">Documentazione dei costruttori e dei distruttori</h2>
+<h2 class="groupheader">Documentazione dei costruttori e dei distruttori</h2>
 <a id="ae3ea6069972ff26050dc8469d4765a0a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae3ea6069972ff26050dc8469d4765a0a">&#9670;&nbsp;</a></span>point() <span class="overload">[1/2]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#ae3ea6069972ff26050dc8469d4765a0a">&#9670;&nbsp;</a></span>point()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -118,50 +135,8 @@ Attributi pubblici</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definizione alla linea <a class="el" href="main_01_07copy_011_08_8cpp_source.html#l00008">8</a> del file <a class="el" href="main_01_07copy_011_08_8cpp_source.html">main (copy 1).cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;: <a class="code" href="structpoint.html#ad547af59ea2414940abdbc9ef985e753">a</a>(xx), <a class="code" href="structpoint.html#ad2215fb25f631d5f4055fc6138306e7c">b</a>(yy) {}</div><div class="ttc" id="structpoint_html_ad547af59ea2414940abdbc9ef985e753"><div class="ttname"><a href="structpoint.html#ad547af59ea2414940abdbc9ef985e753">point::a</a></div><div class="ttdeci">int a</div><div class="ttdef"><b>Definition:</b> <a href="main_01_07copy_011_08_8cpp_source.html#l00006">main (copy 1).cpp:6</a></div></div>
-<div class="ttc" id="structpoint_html_ad2215fb25f631d5f4055fc6138306e7c"><div class="ttname"><a href="structpoint.html#ad2215fb25f631d5f4055fc6138306e7c">point::b</a></div><div class="ttdeci">int b</div><div class="ttdef"><b>Definition:</b> <a href="main_01_07copy_011_08_8cpp_source.html#l00007">main (copy 1).cpp:7</a></div></div>
-</div><!-- fragment -->
-</div>
-</div>
-<a id="ae3ea6069972ff26050dc8469d4765a0a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae3ea6069972ff26050dc8469d4765a0a">&#9670;&nbsp;</a></span>point() <span class="overload">[2/2]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">point::point </td>
-          <td>(</td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>xx</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>yy</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definizione alla linea <a class="el" href="main_8cpp_source.html#l00010">10</a> del file <a class="el" href="main_8cpp_source.html">main.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;: <a class="code" href="structpoint.html#ad547af59ea2414940abdbc9ef985e753">a</a>(xx), <a class="code" href="structpoint.html#ad2215fb25f631d5f4055fc6138306e7c">b</a>(yy) {}</div><div class="ttc" id="structpoint_html_ad547af59ea2414940abdbc9ef985e753"><div class="ttname"><a href="structpoint.html#ad547af59ea2414940abdbc9ef985e753">point::a</a></div><div class="ttdeci">int a</div><div class="ttdef"><b>Definition:</b> <a href="main_01_07copy_011_08_8cpp_source.html#l00006">main (copy 1).cpp:6</a></div></div>
-<div class="ttc" id="structpoint_html_ad2215fb25f631d5f4055fc6138306e7c"><div class="ttname"><a href="structpoint.html#ad2215fb25f631d5f4055fc6138306e7c">point::b</a></div><div class="ttdeci">int b</div><div class="ttdef"><b>Definition:</b> <a href="main_01_07copy_011_08_8cpp_source.html#l00007">main (copy 1).cpp:7</a></div></div>
+<div class="fragment"><div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;: <a class="code" href="structpoint.html#ad547af59ea2414940abdbc9ef985e753">a</a>(xx), <a class="code" href="structpoint.html#ad2215fb25f631d5f4055fc6138306e7c">b</a>(yy) {}</div><div class="ttc" id="structpoint_html_ad547af59ea2414940abdbc9ef985e753"><div class="ttname"><a href="structpoint.html#ad547af59ea2414940abdbc9ef985e753">point::a</a></div><div class="ttdeci">int a</div><div class="ttdef"><b>Definition:</b> main.cpp:8</div></div>
+<div class="ttc" id="structpoint_html_ad2215fb25f631d5f4055fc6138306e7c"><div class="ttname"><a href="structpoint.html#ad2215fb25f631d5f4055fc6138306e7c">point::b</a></div><div class="ttdeci">int b</div><div class="ttdef"><b>Definition:</b> main.cpp:9</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -178,8 +153,6 @@ Attributi pubblici</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definizione alla linea <a class="el" href="main_01_07copy_011_08_8cpp_source.html#l00006">6</a> del file <a class="el" href="main_01_07copy_011_08_8cpp_source.html">main (copy 1).cpp</a>.</p>
-
 </div>
 </div>
 <a id="ad2215fb25f631d5f4055fc6138306e7c"></a>
@@ -194,20 +167,21 @@ Attributi pubblici</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definizione alla linea <a class="el" href="main_01_07copy_011_08_8cpp_source.html#l00007">7</a> del file <a class="el" href="main_01_07copy_011_08_8cpp_source.html">main (copy 1).cpp</a>.</p>
-
 </div>
 </div>
-<hr/>La documentazione per questa struct è stata generata a partire dai seguenti file:<ul>
-<li><a class="el" href="main_01_07copy_011_08_8cpp_source.html">main (copy 1).cpp</a></li>
-<li><a class="el" href="main_8cpp_source.html">main.cpp</a></li>
+<hr/>La documentazione per questa struct è stata generata a partire dal seguente file:<ul>
+<li><a class="el" href="main_8cpp.html">main.cpp</a></li>
 </ul>
 </div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generato Lun 27 Gen 2020 18:24:10 per Sparse Matrix da &#160;<a href="http://www.doxygen.org/index.html">
-<img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.13
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="structpoint.html">point</a></li>
+    <li class="footer">Generato da
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.13 </li>
+  </ul>
+</div>
 </body>
 </html>

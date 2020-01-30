@@ -5,10 +5,17 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.13"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Sparse Matrix: Membri dei composti - Funzioni</title>
+<title>Progetto Sparsematrix: Membri dei composti - Funzioni</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+</script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -21,8 +28,9 @@
  <tbody>
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">Sparse Matrix
+   <div id="projectname">Progetto Sparsematrix
    </div>
+   <div id="projectbrief">Progetto del corso Programmazione C++, Gennaio 2020, Davide Cozzi, 829827 d.cozzi@campus.unimib.it</div>
   </td>
  </tr>
  </tbody>
@@ -43,6 +51,20 @@ $(function() {
 </script>
 <div id="main-nav"></div>
 </div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('functions_func.html','');});
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -79,7 +101,7 @@ $(function() {
 : <a class="el" href="classsparse__matrix.html#a75f0a827b9de8d48b09a4e72311b6dbe">sparse_matrix&lt; T &gt;</a>
 </li>
 <li>const_iterator()
-: <a class="el" href="classsparse__matrix_1_1const__iterator.html#afffb57e131d1e4667eb6c7dd2b26dd48">sparse_matrix&lt; T &gt;::const_iterator</a>
+: <a class="el" href="classsparse__matrix_1_1const__iterator.html#a3b19f6cbb0fbfb3c9b4f7eae04c10966">sparse_matrix&lt; T &gt;::const_iterator</a>
 </li>
 </ul>
 
@@ -118,14 +140,7 @@ $(function() {
 
 <h3><a id="index_i"></a>- i -</h3><ul>
 <li>iterator()
-: <a class="el" href="classsparse__matrix_1_1iterator.html#a2e765efaceebe9eef2b39699eb65f2e0">sparse_matrix&lt; T &gt;::iterator</a>
-</li>
-</ul>
-
-
-<h3><a id="index_n"></a>- n -</h3><ul>
-<li>node()
-: <a class="el" href="classsparse__matrix_1_1node.html#a94b20b4404639be5fc34e696390e28fb">sparse_matrix&lt; T &gt;::node</a>
+: <a class="el" href="classsparse__matrix_1_1iterator.html#a2e9a43365c29311080afeba8765f92a4">sparse_matrix&lt; T &gt;::iterator</a>
 </li>
 </ul>
 
@@ -147,7 +162,7 @@ $(function() {
 </li>
 <li>operator++()
 : <a class="el" href="classsparse__matrix_1_1const__iterator.html#ac646fca1e2d16eceb1f4886ef54e258a">sparse_matrix&lt; T &gt;::const_iterator</a>
-, <a class="el" href="classsparse__matrix_1_1iterator.html#a8344b8c3e23e0c3c884fbedab926be70">sparse_matrix&lt; T &gt;::iterator</a>
+, <a class="el" href="classsparse__matrix_1_1iterator.html#ac6086d6984a11d59e515e638a4b7391f">sparse_matrix&lt; T &gt;::iterator</a>
 </li>
 <li>operator-&gt;()
 : <a class="el" href="classsparse__matrix_1_1const__iterator.html#a10f0f8f01feb5f6a94cea00e23f5c544">sparse_matrix&lt; T &gt;::const_iterator</a>
@@ -175,27 +190,9 @@ $(function() {
 </ul>
 
 
-<h3><a id="index_r"></a>- r -</h3><ul>
-<li>recursive_clear()
-: <a class="el" href="classsparse__matrix.html#a4445ef2e3ff24344d3419b2c0cfebf6c">sparse_matrix&lt; T &gt;</a>
-</li>
-</ul>
-
-
 <h3><a id="index_s"></a>- s -</h3><ul>
 <li>sparse_matrix()
 : <a class="el" href="classsparse__matrix.html#ae113bb914d2c00cc0fad5051c9584212">sparse_matrix&lt; T &gt;</a>
-</li>
-</ul>
-
-
-<h3><a id="index_w"></a>- w -</h3><ul>
-<li>what()
-: <a class="el" href="class_index_out_of_bounds_exception.html#ab3e5706ae7519f3e6c2332c52b3d43f2">IndexOutOfBoundsException</a>
-, <a class="el" href="class_negative_dimension_sparse_matrix_exception.html#a2cb17d6fc611735b7b33a48ed105fdd1">NegativeDimensionSparseMatrixException</a>
-, <a class="el" href="class_negative_index_sparse_matrix_exception.html#a050e2f3663dae6710123f048f11c925a">NegativeIndexSparseMatrixException</a>
-, <a class="el" href="class_no_cast_sparse_matrix_exception.html#a45df6a1782c8207150ac34abf62f087b">NoCastSparseMatrixException</a>
-, <a class="el" href="class_no_sparse_matrix_exception.html#a4e84d2cb6a9f8f369d586229f9c8fd22">NoSparseMatrixException</a>
 </li>
 </ul>
 
@@ -207,19 +204,19 @@ $(function() {
 <li>~iterator()
 : <a class="el" href="classsparse__matrix_1_1iterator.html#a0517e8d7304fba3fc5d0ba2250406c89">sparse_matrix&lt; T &gt;::iterator</a>
 </li>
-<li>~node()
-: <a class="el" href="classsparse__matrix_1_1node.html#a8fa3d89543faa3ef4f097edea98ab45c">sparse_matrix&lt; T &gt;::node</a>
-</li>
 <li>~sparse_matrix()
 : <a class="el" href="classsparse__matrix.html#a376c1d4abca1efa1ffa3c346ea82036d">sparse_matrix&lt; T &gt;</a>
 </li>
 </ul>
 </div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generato Lun 27 Gen 2020 18:24:10 per Sparse Matrix da &#160;<a href="http://www.doxygen.org/index.html">
-<img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.13
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">Generato da
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.13 </li>
+  </ul>
+</div>
 </body>
 </html>

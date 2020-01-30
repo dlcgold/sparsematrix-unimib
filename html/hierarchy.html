@@ -5,10 +5,17 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.13"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Sparse Matrix: Gerarchia delle classi</title>
+<title>Progetto Sparsematrix: Gerarchia delle classi</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+</script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -21,8 +28,9 @@
  <tbody>
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">Sparse Matrix
+   <div id="projectname">Progetto Sparsematrix
    </div>
+   <div id="projectbrief">Progetto del corso Programmazione C++, Gennaio 2020, Davide Cozzi, 829827 d.cozzi@campus.unimib.it</div>
   </td>
  </tr>
  </tbody>
@@ -43,6 +51,20 @@ $(function() {
 </script>
 <div id="main-nav"></div>
 </div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('hierarchy.html','');});
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -65,15 +87,15 @@ $(function() {
 <div class="textblock">Questo elenco di ereditarietà è ordinato approssimativamente, ma non completamente, in ordine alfabetico:</div><div class="directory">
 <div class="levels">[livello di dettaglio <span onclick="javascript:toggleLevel(1);">1</span><span onclick="javascript:toggleLevel(2);">2</span>]</div><table class="directory">
 <tr id="row_0_" class="even"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><span class="icona"><span class="icon">C</span></span><a class="el" href="classsparse__matrix_1_1const__iterator.html" target="_self">sparse_matrix&lt; T &gt;::const_iterator</a></td><td class="desc">Iteratore costante (in lettura) per <a class="el" href="classsparse__matrix.html" title="Classe sparse_matrix per matrice sparsa. ">sparse_matrix</a> </td></tr>
-<tr id="row_1_"><td class="entry"><span style="width:0px;display:inline-block;">&#160;</span><span id="arr_1_" class="arrow" onclick="toggleFolder('1_')">&#9660;</span><span class="icona"><span class="icon">C</span></span><b>exception</b></td><td class="desc"></td></tr>
-<tr id="row_1_0_" class="even"><td class="entry"><span style="width:32px;display:inline-block;">&#160;</span><span class="icona"><span class="icon">C</span></span><a class="el" href="class_index_out_of_bounds_exception.html" target="_self">IndexOutOfBoundsException</a></td><td class="desc">Tentativo di lavorare su un cella fuori dalle dimensioni, se diciarate </td></tr>
-<tr id="row_1_1_"><td class="entry"><span style="width:32px;display:inline-block;">&#160;</span><span class="icona"><span class="icon">C</span></span><a class="el" href="class_negative_dimension_sparse_matrix_exception.html" target="_self">NegativeDimensionSparseMatrixException</a></td><td class="desc"></td></tr>
-<tr id="row_1_2_" class="even"><td class="entry"><span style="width:32px;display:inline-block;">&#160;</span><span class="icona"><span class="icon">C</span></span><a class="el" href="class_negative_index_sparse_matrix_exception.html" target="_self">NegativeIndexSparseMatrixException</a></td><td class="desc"></td></tr>
-<tr id="row_1_3_"><td class="entry"><span style="width:32px;display:inline-block;">&#160;</span><span class="icona"><span class="icon">C</span></span><a class="el" href="class_no_cast_sparse_matrix_exception.html" target="_self">NoCastSparseMatrixException</a></td><td class="desc">Tentativo di cast tra <a class="el" href="classsparse__matrix.html" title="Classe sparse_matrix per matrice sparsa. ">sparse_matrix</a> fallito </td></tr>
-<tr id="row_1_4_" class="even"><td class="entry"><span style="width:32px;display:inline-block;">&#160;</span><span class="icona"><span class="icon">C</span></span><a class="el" href="class_no_sparse_matrix_exception.html" target="_self">NoSparseMatrixException</a></td><td class="desc">Tentativo di uso di <a class="el" href="classsparse__matrix.html" title="Classe sparse_matrix per matrice sparsa. ">sparse_matrix</a> inesistente </td></tr>
-<tr id="row_2_"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><span class="icona"><span class="icon">C</span></span><a class="el" href="structis__defaultf.html" target="_self">is_defaultf</a></td><td class="desc"></td></tr>
-<tr id="row_3_" class="even"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><span class="icona"><span class="icon">C</span></span><a class="el" href="classsparse__matrix_1_1iterator.html" target="_self">sparse_matrix&lt; T &gt;::iterator</a></td><td class="desc">Iteratore (in lettura e scrittura) per <a class="el" href="classsparse__matrix.html" title="Classe sparse_matrix per matrice sparsa. ">sparse_matrix</a> </td></tr>
-<tr id="row_4_"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><span class="icona"><span class="icon">C</span></span><a class="el" href="classsparse__matrix_1_1node.html" target="_self">sparse_matrix&lt; T &gt;::node</a></td><td class="desc">Elemento che rappresenta una cella della matrice sparsa </td></tr>
+<tr id="row_1_"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><span class="icona"><span class="icon">C</span></span><a class="el" href="structelement.html" target="_self">element&lt; T &gt;</a></td><td class="desc"></td></tr>
+<tr id="row_2_" class="even"><td class="entry"><span style="width:0px;display:inline-block;">&#160;</span><span id="arr_2_" class="arrow" onclick="toggleFolder('2_')">&#9660;</span><span class="icona"><span class="icon">C</span></span><b>exception</b></td><td class="desc"></td></tr>
+<tr id="row_2_0_"><td class="entry"><span style="width:32px;display:inline-block;">&#160;</span><span class="icona"><span class="icon">C</span></span><a class="el" href="class_index_out_of_bounds_exception.html" target="_self">IndexOutOfBoundsException</a></td><td class="desc">Tentativo di lavorare su un cella fuori dalle dimensioni, se diciarate </td></tr>
+<tr id="row_2_1_" class="even"><td class="entry"><span style="width:32px;display:inline-block;">&#160;</span><span class="icona"><span class="icon">C</span></span><a class="el" href="class_negative_dimension_sparse_matrix_exception.html" target="_self">NegativeDimensionSparseMatrixException</a></td><td class="desc">Tentativo di lavorare su dimensioni negative </td></tr>
+<tr id="row_2_2_"><td class="entry"><span style="width:32px;display:inline-block;">&#160;</span><span class="icona"><span class="icon">C</span></span><a class="el" href="class_negative_index_sparse_matrix_exception.html" target="_self">NegativeIndexSparseMatrixException</a></td><td class="desc">Tentativo di lavorare su indici negativi </td></tr>
+<tr id="row_2_3_" class="even"><td class="entry"><span style="width:32px;display:inline-block;">&#160;</span><span class="icona"><span class="icon">C</span></span><a class="el" href="class_no_cast_sparse_matrix_exception.html" target="_self">NoCastSparseMatrixException</a></td><td class="desc">Tentativo di cast tra <a class="el" href="classsparse__matrix.html" title="Classe sparse_matrix per matrice sparsa. ">sparse_matrix</a> fallito </td></tr>
+<tr id="row_2_4_"><td class="entry"><span style="width:32px;display:inline-block;">&#160;</span><span class="icona"><span class="icon">C</span></span><a class="el" href="class_no_sparse_matrix_exception.html" target="_self">NoSparseMatrixException</a></td><td class="desc">Tentativo di uso di <a class="el" href="classsparse__matrix.html" title="Classe sparse_matrix per matrice sparsa. ">sparse_matrix</a> inesistente </td></tr>
+<tr id="row_3_" class="even"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><span class="icona"><span class="icon">C</span></span><a class="el" href="structis__defaultf.html" target="_self">is_defaultf</a></td><td class="desc"></td></tr>
+<tr id="row_4_"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><span class="icona"><span class="icon">C</span></span><a class="el" href="classsparse__matrix_1_1iterator.html" target="_self">sparse_matrix&lt; T &gt;::iterator</a></td><td class="desc">Iteratore (in lettura e scrittura) per <a class="el" href="classsparse__matrix.html" title="Classe sparse_matrix per matrice sparsa. ">sparse_matrix</a> </td></tr>
 <tr id="row_5_" class="even"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><span class="icona"><span class="icon">C</span></span><a class="el" href="structpoint.html" target="_self">point</a></td><td class="desc"></td></tr>
 <tr id="row_6_"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><span class="icona"><span class="icon">C</span></span><a class="el" href="structpointx_max.html" target="_self">pointxMax</a></td><td class="desc"></td></tr>
 <tr id="row_7_" class="even"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><span class="icona"><span class="icon">C</span></span><a class="el" href="structpositive.html" target="_self">positive</a></td><td class="desc"></td></tr>
@@ -81,11 +103,14 @@ $(function() {
 </table>
 </div><!-- directory -->
 </div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generato Lun 27 Gen 2020 18:24:10 per Sparse Matrix da &#160;<a href="http://www.doxygen.org/index.html">
-<img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.13
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">Generato da
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.13 </li>
+  </ul>
+</div>
 </body>
 </html>

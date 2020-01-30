@@ -1,4 +1,6 @@
 var searchData=
 [
-  ['recursive_5fclear',['recursive_clear',['../classsparse__matrix.html#a4445ef2e3ff24344d3419b2c0cfebf6c',1,'sparse_matrix']]]
+  ['test_5fcostante',['test_costante',['../main_8cpp.html#a2fe1bc86c7c7ee042ee2f250b39b9cfa',1,'main.cpp']]],
+  ['test_5ffondamentali',['test_fondamentali',['../main_8cpp.html#a7bbd1f2ef81b1f6325e79ab78d17686b',1,'main.cpp']]],
+  ['test_5fpoint',['test_point',['../main_8cpp.html#a7e6272526a68d4d61dc592450122e52a',1,'main.cpp']]]
 ];

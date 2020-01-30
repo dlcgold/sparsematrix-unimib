@@ -125,7 +125,9 @@ void progettoQt::httpDownloadFinished() {
     if(reply->error()){
         QMessageBox replyError;
 
-        replyError.setText("<p align='center'>url errato</p");
+        //replyError.setText("url errato");
+       replyError.setText("<font color=\"red\">url errato</font>");
+
         ui->urlBox->setText("");
 
         replyError.exec();

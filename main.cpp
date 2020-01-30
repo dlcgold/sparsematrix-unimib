@@ -126,14 +126,7 @@ void test_point(){
   testpp.clear();
 }
 int main(){
-  smatrixi test(0);
-  //std::cout << test.get_default_value() << "\n";
-  test.add(3, 2, 2);
-  test.add(1, 1, 2);
-  test.add(5, 0, 1);
-  test.add(18, 3, 3);
-  test.add(8, 3, 3);
-  test.print();
+  
   /*test.add(-90, 830, 10);
   test.add(100, 10, 80);
   test.add(99, 22, 76);

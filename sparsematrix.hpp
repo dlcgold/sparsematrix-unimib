@@ -110,7 +110,7 @@ private:
   int size_column;
 
   /**
-   * @brief elemo che rappresenta una cella della matrice sparsa
+   * @brief nodo che rappresenta una cella della matrice sparsa
    *
    */
   class node{
@@ -122,6 +122,10 @@ private:
     node *next;
     
   public:
+    /**
+     * @brief struct che definisce l'elemento
+     */
+
     struct element{
       T v;
       const int x;
@@ -129,34 +133,10 @@ private:
       element(const T &value, const int i, const int j): v(value), x(i), y(j){}
       friend class node;
       ~element(){}
-    };
+    } *ret;
     
-    element *ret;
+    //element *ret;
     
-    /**
-     * @brief valore contenuto nella cella, modificabile
-     *
-     */
-    // T value;
-
-    /**
-     * @brief indice di riga, non modificabile 
-     *
-     */
-    //const int i;
-
-    /**
-     * @brief indice di colonna, non modificabile 
-     *
-     */
-    //const int j;
-    
-    /**
-     * @brief costruttore di default dell'elemo
-     *
-     */
-    // node(): next(nullptr){}
-
     /**
      * @brief costruttore dell'elemo senza elemo successivo
      *

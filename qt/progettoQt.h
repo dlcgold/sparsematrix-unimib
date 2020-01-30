@@ -1,5 +1,5 @@
-#ifndef DOWNLOADER_H
-#define DOWNLOADER_H
+#ifndef progettoQT_H
+#define progettoQT_H
 
 #include <QWidget>
 #include <QDialog>
@@ -13,17 +13,17 @@
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
-  class downloader;
+  class progettoQt;
 }
 QT_END_NAMESPACE
 
 
-class downloader : public QWidget {
+class progettoQt : public QWidget {
   Q_OBJECT
 
 public:
-  downloader(QWidget *parent = nullptr);
-  ~downloader();
+  progettoQt(QWidget *parent = nullptr);
+  ~progettoQt();
 public:
   void startRequest(QUrl url);
 
@@ -40,11 +40,11 @@ private slots:
   void enableAnalyzeButton();
   
 private:
-  Ui::downloader *ui;
+  Ui::progettoQt *ui;
   QUrl url;
   QNetworkAccessManager *manager;
   QNetworkReply *reply;
   QByteArray text;
 
 };
-#endif // DOWNLOADER_H
+#endif // progettoQt_H

@@ -1,9 +1,9 @@
-#include "downloader.h"
+#include "progettoQt.h"
 #include <QApplication>
 
 int main(int argc, char *argv[]) {
   QApplication a(argc, argv);
-  downloader w;
+  progettoQt w;
   w.show();
   a.exec();
   return 0;

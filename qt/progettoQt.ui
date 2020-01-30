@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>downloader</class>
- <widget class="QWidget" name="downloader">
+ <class>progettoQt</class>
+ <widget class="QWidget" name="progettoQt">
   <property name="geometry">
    <rect>
     <x>0</x>

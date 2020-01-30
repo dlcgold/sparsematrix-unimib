@@ -1,16 +1,16 @@
 /****************************************************************************
-** Meta object code from reading C++ file 'downloader.h'
+** Meta object code from reading C++ file 'progettoQt.h'
 **
 ** Created by: The Qt Meta Object Compiler version 67 (Qt 5.9.5)
 **
 ** WARNING! All changes made in this file will be lost!
 *****************************************************************************/
 
-#include "downloader.h"
+#include "progettoQt.h"
 #include <QtCore/qbytearray.h>
 #include <QtCore/qmetatype.h>
 #if !defined(Q_MOC_OUTPUT_REVISION)
-#error "The header file 'downloader.h' doesn't include <QObject>."
+#error "The header file 'progettoQt.h' doesn't include <QObject>."
 #elif Q_MOC_OUTPUT_REVISION != 67
 #error "This file was generated using the moc from 5.9.5. It"
 #error "cannot be used with the include files from this version of Qt."
@@ -20,18 +20,18 @@
 QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
-struct qt_meta_stringdata_downloader_t {
+struct qt_meta_stringdata_progettoQt_t {
     QByteArrayData data[6];
     char stringdata0[92];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
-    qptrdiff(offsetof(qt_meta_stringdata_downloader_t, stringdata0) + ofs \
+    qptrdiff(offsetof(qt_meta_stringdata_progettoQt_t, stringdata0) + ofs \
         - idx * sizeof(QByteArrayData)) \
     )
-static const qt_meta_stringdata_downloader_t qt_meta_stringdata_downloader = {
+static const qt_meta_stringdata_progettoQt_t qt_meta_stringdata_progettoQt = {
     {
-QT_MOC_LITERAL(0, 0, 10), // "downloader"
+QT_MOC_LITERAL(0, 0, 10), // "progettoQt"
 QT_MOC_LITERAL(1, 11, 24), // "on_analyzeButton_clicked"
 QT_MOC_LITERAL(2, 36, 0), // ""
 QT_MOC_LITERAL(3, 37, 13), // "httpReadyRead"
@@ -39,13 +39,13 @@ QT_MOC_LITERAL(4, 51, 20), // "httpDownloadFinished"
 QT_MOC_LITERAL(5, 72, 19) // "enableAnalyzeButton"
 
     },
-    "downloader\0on_analyzeButton_clicked\0"
+    "progettoQt\0on_analyzeButton_clicked\0"
     "\0httpReadyRead\0httpDownloadFinished\0"
     "enableAnalyzeButton"
 };
 #undef QT_MOC_LITERAL
 
-static const uint qt_meta_data_downloader[] = {
+static const uint qt_meta_data_progettoQt[] = {
 
  // content:
        7,       // revision
@@ -73,10 +73,10 @@ static const uint qt_meta_data_downloader[] = {
        0        // eod
 };
 
-void downloader::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
+void progettoQt::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
 {
     if (_c == QMetaObject::InvokeMetaMethod) {
-        downloader *_t = static_cast<downloader *>(_o);
+        progettoQt *_t = static_cast<progettoQt *>(_o);
         Q_UNUSED(_t)
         switch (_id) {
         case 0: _t->on_analyzeButton_clicked(); break;
@@ -89,26 +89,26 @@ void downloader::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
     Q_UNUSED(_a);
 }
 
-const QMetaObject downloader::staticMetaObject = {
-    { &QWidget::staticMetaObject, qt_meta_stringdata_downloader.data,
-      qt_meta_data_downloader,  qt_static_metacall, nullptr, nullptr}
+const QMetaObject progettoQt::staticMetaObject = {
+    { &QWidget::staticMetaObject, qt_meta_stringdata_progettoQt.data,
+      qt_meta_data_progettoQt,  qt_static_metacall, nullptr, nullptr}
 };
 
 
-const QMetaObject *downloader::metaObject() const
+const QMetaObject *progettoQt::metaObject() const
 {
     return QObject::d_ptr->metaObject ? QObject::d_ptr->dynamicMetaObject() : &staticMetaObject;
 }
 
-void *downloader::qt_metacast(const char *_clname)
+void *progettoQt::qt_metacast(const char *_clname)
 {
     if (!_clname) return nullptr;
-    if (!strcmp(_clname, qt_meta_stringdata_downloader.stringdata0))
+    if (!strcmp(_clname, qt_meta_stringdata_progettoQt.stringdata0))
         return static_cast<void*>(this);
     return QWidget::qt_metacast(_clname);
 }
 
-int downloader::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
+int progettoQt::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 {
     _id = QWidget::qt_metacall(_c, _id, _a);
     if (_id < 0)

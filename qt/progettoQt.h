@@ -28,22 +28,25 @@ public:
 
 
 private slots:
+  // slot per far partire l'analisi al click
   void on_analyzeButton_clicked();
 
-  // slot for readyRead() signal
+  // slot per il segnale readyRead()
   void httpReadyRead();
 
-  // slot for finished() signal from reply
+  // slot per seganle finished()
   void httpDownloadFinished();
 
+  // slot per abilitare bottone
   void enableAnalyzeButton();
   
 private:
+  
   Ui::progettoQt *ui;
   QUrl url;
   QNetworkAccessManager *manager;
   QNetworkReply *reply;
-  QByteArray text;
+  QString text;
 
 };
 #endif // progettoQt_H

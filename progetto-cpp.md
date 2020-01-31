@@ -7,7 +7,7 @@ Sparse Matrix
 	
 ---
 
-La Struttura Dati 
+La Struttura Dati
 =================
 
 Ragionando sulla consegna del progetto ho concluso che il modo migliore
@@ -24,11 +24,13 @@ In questa implementazione ogni della **sparse matrix** contiene:
     attributo `private` è causata dal fatto che l’utente non deve essere
     conscio della struttura dati in uso
 
--   il valore che deve essere salvato
+-   una `struct` `element` contenente:
 
--   i due indici mediante i quali, logicamente, accedere al valore. I
-    due indici sono definiti `const` in quanto non modificabili dopo la
-    creazione della cella
+    -   il valore che deve essere salvato
+
+    -   i due indici mediante i quali, logicamente, accedere al valore.
+        I due indici sono definiti `const` in quanto non modificabili
+        dopo la creazione della cella
 
 Per questa *sottoclasse* `node` viene implementato un *costruttore* che
 genera un node a partire dal valore che si vuole aggiungere e dalla
@@ -43,8 +45,11 @@ Parliamo ora della struttura dati completa, chiamata `sparse_matrix`. Si
 hanno una serie di attributi privati necessari per il corretto
 funzionamento della stessa:
 
--   il valore di default scelto obbligatoriamente dall’utente al monento
+-   il valore di default scelto obbligatoriamente dall’utente al momento
     della creazione di una matrice sparsa
+
+-   un booleano per verificare se la matrice è stata definita
+    dall’utente con una dimensione predefinita
 
 -   indicazioni riguardanti il numero di righe e colonne
 
@@ -55,8 +60,8 @@ funzionamento della stessa:
 Si hanno quindi diversi costruttori utili:
 
 -   si ha innanzitutto il costruttore base con solo l’indicazione di
-    default, senza quindi indicazone delle dimensioni della matrice (che
-    diventa, a livello teorico, una matrice quadrata di massima
+    default, senza quindi indicazione delle dimensioni della matrice
+    (che diventa, a livello teorico, una matrice quadrata di massima
     dimensione intera al quadrato)
 
 -   il costruttore di una matrice sparsa di dimensione teorica definita
@@ -117,7 +122,7 @@ valore:
         punterà a `nullptr`)
 
     2.  si sta valutando l’unico caso possibile restante, ovvero
-        l’elmeneto che volgiamo insierire viene aggiunto in mezzo alla
+        l’elemento che vogliamo inserire viene aggiunto in mezzo alla
         matrice sparsa, nella giusta posizione ordinata sui due indici.
         In tal caso, se gli indici del nodo che si vuole inserire
         coincidono con quelli dell’ultimo elemento se ne sovrascrive il
@@ -136,7 +141,7 @@ un’eccezione `IndexOutOfBoundsException()`.
 
 Sempre da specifica si ha poi l’implementazione del supporto agli
 iteratori di tipo forward in e scrittura. Questo viene implementato con
-le due classi `iterator` e `const_iterator` che vengono costruti a
+le due classi `iterator` e `const_iterator` che vengono costruiti a
 partire da `node`. Si ha quindi la definizione dei metodi `begin()`, che
 restituisce un `iterator` o un `const_iterator` costruiti a partire da
 `head`, e `end()`, che restituisce un `iterator` o un `const_iterator`
@@ -157,20 +162,34 @@ della `add` fino ad ottenere una condizione d’arresto e, se si incontra
 il `node` con indici uguali a quelli richiesti in uscita dal ciclo se ne
 restituisce il valore, altrimenti si restituisce il valore di default.
 
-Infine viene implementata una funzione gloable
+Infine viene implementata una funzione globale
 `evaluate(sparse_matrix, predicato)` che conta il numero di elementi
-nella matrice che soddifano il predicato (considerando anche i valori di
-default). Si itera quindi sulla matrice sparsa contando tale numero.
+nella matrice che soddisfano il predicato (considerando anche i valori
+di default). Si itera quindi sulla matrice sparsa contando tale numero.
 Infine si verifica se il valore di default lo soddisfa e, in caso
 positivo, si conta il numero di celle con valore di default (ovvero
 numero totale di celle meno il numero elementi effettivamente allocati,
 numero che è salvato nell’attributo `size`) e lo si somma al conteggio
 sopra effettuato, restituendo il risultato.
 
-Test
+Test 
 ====
 
-La struttura dati viene testata con il tipo primitivo `float` e ne viene
-testato il *cast* a `int`. Viene infine testata la matrice su un tipo
-custom `point`, che viene rappresentato da due coordinate. Nei vari test
-si verifica anche la corretta stampa mediante iteratori
+Il primo test viene effettuando generando una `sparse_matrix` con valori
+di tipo `float` di dimensione definita $3\times
+3$. Vengono testati metodi che ritornano il numero di righe e di
+colonne. Si usa poi un metodo `printdef` per la stampa di dimensioni
+predefinite (possibilmente piccole) che itera come se si avesse a che
+fare con una matrice standard, stampando sia gli elementi caricati
+dall’utente che gli eventuali valori di default. Si procede poi con il
+test della funzione globale generica `evaluate` con il controllo del
+risultato mediante `assert`.
+
+Con la stessa tecnica si verifica anche la buona riuscita della
+costruzione di una nuova `sparse_matrix` mediante *cast*. Viene
+verificato anche l’assegnamento tra due `sparse_matrix` e l’assegnamento
+tra iteratori.
+
+Vengono poi effettuati test simili su una matrice, di dimensioni non
+specificate, dove non vengono però aggiunti valori e su una
+`sparse_matrix` definita su un tipo custom `point`.

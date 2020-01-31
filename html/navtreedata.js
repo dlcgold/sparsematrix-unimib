@@ -2,6 +2,7 @@ var NAVTREE =
 [
   [ "Progetto Sparsematrix", "index.html", [
     [ "Sparse Matrix", "md_progetto-cpp.html", null ],
+    [ "progetto-cpp", "md__r_e_a_d_m_e.html", null ],
     [ "Classi", "annotated.html", [
       [ "Elenco dei tipi composti", "annotated.html", "annotated_dup" ],
       [ "Indice dei tipi composti", "classes.html", null ],
@@ -9,7 +10,6 @@ var NAVTREE =
       [ "Membri dei composti", "functions.html", [
         [ "Tutto", "functions.html", null ],
         [ "Funzioni", "functions_func.html", null ],
-        [ "Variabili", "functions_vars.html", null ],
         [ "Funzioni collegate", "functions_rela.html", null ]
       ] ]
     ] ],
@@ -17,8 +17,7 @@ var NAVTREE =
       [ "Elenco dei file", "files.html", "files" ],
       [ "Elementi dei file", "globals.html", [
         [ "Tutto", "globals.html", null ],
-        [ "Funzioni", "globals_func.html", null ],
-        [ "Ridefinizioni di tipo (typedef)", "globals_type.html", null ]
+        [ "Funzioni", "globals_func.html", null ]
       ] ]
     ] ]
   ] ]

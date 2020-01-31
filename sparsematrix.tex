@@ -131,7 +131,7 @@ necessari per il corretto funzionamento della stessa:
 Si hanno quindi diversi costruttori utili:
 \begin{itemize}
   \item si ha innanzitutto il costruttore base con solo l'indicazione
-  di default, senza quindi indicazone delle dimensioni della matrice
+  di default, senza quindi indicazione delle dimensioni della matrice
   (che diventa, a livello teorico, una matrice quadrata di massima
   dimensione intera al quadrato)
   \item il costruttore di una matrice sparsa di dimensione teorica
@@ -206,7 +206,7 @@ un'eccezione \texttt{IndexOutOfBoundsException()}.\\
 Sempre da specifica si ha poi l'implementazione del supporto agli
 iteratori di tipo forward in e scrittura. Questo viene implementato
 con le due classi \texttt{iterator} e \texttt{const\_iterator} che
-vengono costruti a partire da \texttt{node}. Si ha quindi la
+vengono costruiti a partire da \texttt{node}. Si ha quindi la
 definizione dei metodi \texttt{begin()}, che restituisce un
 \texttt{iterator} o un \texttt{const\_iterator} costruiti a partire da
 \texttt{head}, e \texttt{end()}, che restituisce un
@@ -227,7 +227,7 @@ uscita dal ciclo se ne restituisce il valore, altrimenti si
 restituisce il valore di default.\\
 Infine viene implementata una funzione gloable
 \texttt{evaluate(sparse\_matrix, predicato)} che conta il numero di
-elementi nella matrice che soddifano il predicato (considerando anche
+elementi nella matrice che soddisfano il predicato (considerando anche
 i valori di default). Si itera quindi sulla matrice sparsa contando
 tale numero. Infine si verifica se il valore di default lo soddisfa e,
 in caso positivo, si conta il numero di celle con valore di
@@ -252,5 +252,5 @@ costruzione di una nuova \texttt{sparse\_matrix} mediante
 \texttt{sparse\_matrix} e l'assegnamento tra iteratori.\\
 Vengono poi effettuati test simili su una matrice, di dimensioni non
 specificate, dove non vengono però aggiunti valori e su una
-\texttt{sparse\_matrix} definitan su un tipo custom \texttt{point}.
+\texttt{sparse\_matrix} definita su un tipo custom \texttt{point}.
 \end{document}

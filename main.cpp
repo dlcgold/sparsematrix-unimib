@@ -109,9 +109,12 @@ void test_point(){
   testp.add(point(1,2), 1, 2);
   testp.add(point(2,7), 0, 10000);
   testp.add(point(0,0), 1, 5);
+  testp.add(point(2,4), 1, 2);
   testp.add(point(5,4), 200, 4000);
-  
-  std::cout << testp.get_size() << " " << testp.get_size_row() << " " << testp.get_size_column() << "\n\n";
+  testp.add(point(1,0), 1, 5);
+  assert(testp.get_size()==5);
+  assert(testp.get_size_row()==200);
+  assert(testp.get_size_column()==10000);  
   smatrixp::iterator ip,iep;
    for(ip=testp.begin(), iep=testp.end(); ip!=iep; ip++)
      std::cout << ip->v.a << ", " << ip->v.b << std::endl;
@@ -130,6 +133,14 @@ int main(){
   test_fondamentali();
   smatrixi costante(0);
   test_vuota(costante);
-  test_point();
+  //test_point();
+  smatrixi testM(0);
+  testM.add(1, 0, 0);
+  testM.add(2, 1, 2);
+  testM.add(5, 0, 0);
+  testM.add(5, 0, 0);
+  testM.add(5, 0, 0);
+  testM.print();
+  testM.clear();
   return 0;
 }

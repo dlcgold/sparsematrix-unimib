@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['v',['v',['../structelemr.html#a7e2fe76dfd7b08f29833b4ada6786ed2',1,'elemr::v()'],['../structsparse__matrix_1_1node_1_1element.html#a27a71ce01c22bbb47496679d2ffe6246',1,'sparse_matrix::node::element::v()']]],
-  ['value',['value',['../structelement.html#a37f81045151db2eab3fc0dae96045ebc',1,'element']]]
+  ['_7econst_5fiterator',['~const_iterator',['../classsparse__matrix_1_1const__iterator.html#a19df9ab480099b277b8d998ac1a36126',1,'sparse_matrix::const_iterator']]],
+  ['_7eiterator',['~iterator',['../classsparse__matrix_1_1iterator.html#a0517e8d7304fba3fc5d0ba2250406c89',1,'sparse_matrix::iterator']]],
+  ['_7esparse_5fmatrix',['~sparse_matrix',['../classsparse__matrix.html#a376c1d4abca1efa1ffa3c346ea82036d',1,'sparse_matrix']]]
 ];

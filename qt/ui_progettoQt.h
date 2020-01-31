@@ -28,7 +28,7 @@ public:
     QLineEdit *urlBox;
     QPushButton *analyzeButton;
     QLabel *wordLabel;
-    QTextBrowser *textLabel;
+    QTextBrowser *textBrowser;
     QLabel *charLabel;
     QLabel *noSpaceLabel;
     QLabel *phraseLabel;
@@ -66,9 +66,9 @@ public:
         wordLabel->setFrameShape(QFrame::NoFrame);
         wordLabel->setFrameShadow(QFrame::Raised);
         wordLabel->setLineWidth(0);
-        textLabel = new QTextBrowser(progettoQt);
-        textLabel->setObjectName(QStringLiteral("textLabel"));
-        textLabel->setGeometry(QRect(10, 40, 501, 271));
+        textBrowser = new QTextBrowser(progettoQt);
+        textBrowser->setObjectName(QStringLiteral("textBrowser"));
+        textBrowser->setGeometry(QRect(10, 40, 501, 271));
         charLabel = new QLabel(progettoQt);
         charLabel->setObjectName(QStringLiteral("charLabel"));
         charLabel->setGeometry(QRect(550, 70, 181, 21));

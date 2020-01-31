@@ -1,6 +1,4 @@
 var searchData=
 [
-  ['point',['point',['../structpoint.html',1,'']]],
-  ['pointxmax',['pointxMax',['../structpointx_max.html',1,'']]],
-  ['positive',['positive',['../structpositive.html',1,'']]]
+  ['sparse_5fmatrix',['sparse_matrix',['../classsparse__matrix.html',1,'']]]
 ];

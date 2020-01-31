@@ -1,5 +1,8 @@
 var searchData=
 [
-  ['main',['main',['../main_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4',1,'main.cpp']]],
-  ['main_2ecpp',['main.cpp',['../main_8cpp.html',1,'']]]
+  ['negativedimensionsparsematrixexception',['NegativeDimensionSparseMatrixException',['../class_negative_dimension_sparse_matrix_exception.html',1,'']]],
+  ['negativeindexsparsematrixexception',['NegativeIndexSparseMatrixException',['../class_negative_index_sparse_matrix_exception.html',1,'']]],
+  ['nocastsparsematrixexception',['NoCastSparseMatrixException',['../class_no_cast_sparse_matrix_exception.html',1,'']]],
+  ['nonodeexception',['noNodeException',['../classno_node_exception.html',1,'']]],
+  ['nosparsematrixexception',['NoSparseMatrixException',['../class_no_sparse_matrix_exception.html',1,'']]]
 ];

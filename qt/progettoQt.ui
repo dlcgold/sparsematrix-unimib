@@ -97,7 +97,7 @@
     <string/>
    </property>
   </widget>
-  <widget class="QTextBrowser" name="textLabel">
+  <widget class="QTextBrowser" name="textBrowser">
    <property name="geometry">
     <rect>
      <x>10</x>

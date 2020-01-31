@@ -14,13 +14,11 @@ var classsparse__matrix =
     [ "end", "classsparse__matrix.html#a7fbde155ed4c25b38b5005e7d83c6180", null ],
     [ "end", "classsparse__matrix.html#af5a6f5bb6ebd5ffd40933f346852bd75", null ],
     [ "get_default_value", "classsparse__matrix.html#a6251f1f94b86e04ac4a4fe59155ed826", null ],
-    [ "get_head", "classsparse__matrix.html#a49d501293976bd2aaf8ec6f48b5ceb9b", null ],
-    [ "get_max_column", "classsparse__matrix.html#a899ce8b03ae09af0a610f7659d6ed228", null ],
-    [ "get_max_row", "classsparse__matrix.html#a3ac46ba6642d81e94d721a71279be7fb", null ],
+    [ "get_dim", "classsparse__matrix.html#ae2452a794d0ecf7f3eaa7dd96c811342", null ],
     [ "get_size", "classsparse__matrix.html#a867242aa8a3335165bd158682250e2db", null ],
     [ "get_size_column", "classsparse__matrix.html#aca943521574c4c5b5d9c73e6ea897e37", null ],
     [ "get_size_row", "classsparse__matrix.html#ab6b17669a2fa27844d62948b6c5a0bc9", null ],
     [ "operator()", "classsparse__matrix.html#a8f9237ef4c69ba4fb51454a2eacd9b59", null ],
     [ "operator=", "classsparse__matrix.html#a9f9e8f69ee9ccf89849ec9a6a6b320f6", null ],
-    [ "print", "classsparse__matrix.html#ab88c766f7deb3769dfe0e4478aa25210", null ]
+    [ "print", "classsparse__matrix.html#a665e9b1f5d563af8e640015db1807079", null ]
 ];

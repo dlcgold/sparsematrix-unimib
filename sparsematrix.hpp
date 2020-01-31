@@ -13,9 +13,9 @@
  * @return eccezione
  */
 class IndexOutOfBoundsException: public std::exception {
-    virtual const char* what() const throw() {
-        return "indice out of bound";
-    }
+  virtual const char* what() const throw() {
+    return "indice out of bound";
+  }
 };
 
 /**
@@ -24,9 +24,9 @@ class IndexOutOfBoundsException: public std::exception {
  * @return eccezione
  */
 class NoSparseMatrixException: public std::exception {
-    virtual const char* what() const throw() {
-        return "passaggio matrice nulla";
-    }
+  virtual const char* what() const throw() {
+    return "passaggio matrice nulla";
+  }
 };
 
 
@@ -36,9 +36,9 @@ class NoSparseMatrixException: public std::exception {
  * @return eccezione
  */
 class NoCastSparseMatrixException: public std::exception {
-    virtual const char* what() const throw() {
-        return "impossibile costruire matrice con cast";
-    }
+  virtual const char* what() const throw() {
+    return "impossibile costruire matrice con cast";
+  }
 };
 
 /**
@@ -47,9 +47,9 @@ class NoCastSparseMatrixException: public std::exception {
  * @return eccezione
  */
 class NegativeIndexSparseMatrixException: public std::exception {
-    virtual const char* what() const throw() {
-        return "indice negativo";
-    }
+  virtual const char* what() const throw() {
+    return "indice negativo";
+  }
 };
 
 /**
@@ -58,9 +58,9 @@ class NegativeIndexSparseMatrixException: public std::exception {
  * @return eccezione
  */
 class NegativeDimensionSparseMatrixException: public std::exception {
-    virtual const char* what() const throw() {
-        return "indice negativo";
-    }
+  virtual const char* what() const throw() {
+    return "indice negativo";
+  }
 };
 
 /**
@@ -69,9 +69,9 @@ class NegativeDimensionSparseMatrixException: public std::exception {
  * @return eccezione
  */
 class  noNodeException: public std::exception {
-    virtual const char* what() const throw() {
-        return "indice negativo";
-    }
+  virtual const char* what() const throw() {
+    return "indice negativo";
+  }
 };
 
 /**
@@ -128,20 +128,16 @@ private:
       const int x;
       const int y;
       element(const T &value, const int i, const int j): v(value), x(i), y(j){}
-      
+      ~element(){}
     } *ret;
-    
-    //element *ret;
-    
+
     /**
-     * @brief costruttore dell'elemo senza elemo successivo
+     * @brief costruttore del nodo senza nodo successivo
      *
      * @param v valore della cella
      * @param x indice di riga della cella
      * @param y indice di colonna della cella
      */
-    //node(const T &v, const int x, const int y): next(nullptr), value(v),
-    //	i(x), j(y){}
     node(const T &v, const int x, const int y): next(nullptr){
       try{
 	ret = new element(v, x, y);
@@ -172,16 +168,16 @@ private:
   node *head;
  
   /**
-    * @brief numero totale di elemi inseriti
-    *
-    */
+   * @brief numero totale di nodi inseriti
+   *
+   */
   int size;
 
   /**
-   * @brief distrugge gli elemi linkati a partire da un elemo
+   * @brief distrugge i nodi a partire da un determinato nodo
    *
    *
-   * @param n elemo a partire dal quale si distrugge
+   * @param n nodo a partire dal quale si distrugge
    */
   void recursive_clear(node *n){
     if(n!=nullptr) {
@@ -190,13 +186,12 @@ private:
       n->ret = nullptr;
       delete n;
       size--;
-      n = nullptr;
-      
+      n = nullptr;   
     }
   }
 public:
 
-   /**
+  /**
    * @brief getter del valore di default
    *
    * @return valore di default di sparse_matrix
@@ -204,13 +199,13 @@ public:
   const T get_default_value() const {
     return default_value;
   }
-/**
+  /**
    * @brief getter del tipo di matrice
    *
    * @return true se la matrice è di dimensioni definite dall'utente
    */
   
-   bool get_dim() const {
+  bool get_dim() const {
     return dim;
   }
 
@@ -246,10 +241,10 @@ public:
    *
    * @param dvalue valore di default obbligatorio
    */
-  explicit sparse_matrix(T dvalue): default_value(dvalue), dim(false),
-				    size_row(INT_MAX),
-				    size_column(INT_MAX),
-				    head(nullptr), size(0){};
+  sparse_matrix(T dvalue): default_value(dvalue), dim(false),
+			   size_row(INT_MAX),
+			   size_column(INT_MAX),
+			   head(nullptr), size(0){};
 
 
   /**
@@ -308,6 +303,8 @@ public:
   void add(const T &v, const int i, const int j) {
     if(i < 0 || j < 0)
       throw  NegativeIndexSparseMatrixException();
+    // se la matrice è di dimensioni definite controllo di essere
+    // nelle dimensioni definite dall'utente (usando l'implicazione logica)
     if(!dim || ((i < size_row) && (j < size_column))){
       node *elem;
       try{
@@ -315,8 +312,10 @@ public:
       }catch(...){
 	throw noNodeException{};
       }
-      
+      // parto iterando dalla testa per capire dove inserie il nuovo nodo
       node *temp = head;
+      // di base aumento di 1 la size in quanto sto inserendo un nodo
+      // ci sarà un -1 in caso di cambio di nodo
       size++;
       if(head == nullptr){
 	head = elem;
@@ -338,28 +337,31 @@ public:
 	  }
 
 	  // se sono arrivato alla fine aggiungo il valore alla fine
+	  // o se l'ultimo valore è identico tengo l'ultimo valore aggiunto
 	  if(temp->next == nullptr) {
 	    if(elem->ret->x == temp->ret->x && elem->ret->y == temp->ret->y) {
 	      temp->ret->v = elem->ret->v;
 	      size--;
+	      // avendo sovrascritto cancello elem e la struct con i valori
 	      delete elem->ret;
-	      // avendo sovrascritto cancello elem
 	      delete elem;
+	      elem->ret = nullptr;
+	      elem = nullptr;
 	    }else{
 	      elem->next = nullptr;
 	      temp->next = elem;
 	    }
-	    //tail=elem;
-	 
-	    //size++;
 	  }else {
 	    // aggiungo il valore in mezzo
 	    // se sono uguali tengo l'ultimo valore aggiunto
 	    if(elem->ret->x == temp->ret->x && elem->ret->y == temp->ret->y) {
 	      temp->ret->v = elem->ret->v;
 	      size--;
-	      // avendo sovrascritto cancello elem
+	      // avendo sovrascritto cancello elem e la struct con i valori
+	      delete elem->ret;
 	      delete elem;
+	      elem->ret = nullptr;
+	      elem = nullptr;
 	    }else {
 	      // altrimenti inserisco in mezzo
 	      elem->next = temp->next;
@@ -371,7 +373,7 @@ public:
     }else{
       throw IndexOutOfBoundsException();
     }
-    // conto massima riga e colonna
+    // conto massima riga e colonna se non definite dall'utente
     if(!dim){
       int max_row_current = 0;
       int max_column_current = 0;
@@ -390,7 +392,7 @@ public:
   }
 
   /**
-   * @brief stampa lineare degli elemi
+   * @brief stampa lineare dei nodi
    *
    */
   void print() const{
@@ -404,7 +406,7 @@ public:
   }
   
   /**
-   * @brief overload dell'operatore () per accedere all'elemo
+   * @brief overload dell'operatore () per accedere al nodo di posizone (x,y)
    *
    * @param x indice di riga della cella voluta
    * @param y indice di colonna della cella voluta
@@ -422,13 +424,15 @@ public:
       node *current = head;
       T& value = default_value;
 
-      // come per la add avanzo fino a che non ho problemi
+      // come per la add avanzo fino alle condizioni di arresto
       while(current->next != nullptr &&
 	    ((current->next->ret->x == x && current->next->ret->y <= y)
 	     || (current->next->ret->x < x))) {
 	
 	current = current->next;
       }
+      // se mi sono fermato sul nodo corrispondente alle coordinate richieste
+      // ne resituisco il valore, altrimenti resituisco il valore di default
       if(current->ret->x == x && current->ret->y == y){
 	return current->ret->v;
       }else{
@@ -473,6 +477,7 @@ public:
 					     head(nullptr), size(0) {
     node *curr = other.head;
 
+    // eseguo una copia nodo per nodo
     try {
       while(curr != nullptr) {
 	add(curr->ret->v, curr->ret->x, curr->ret->y);
@@ -492,20 +497,14 @@ public:
    */
   
   class iterator{
-  
-   
+    
   private:
     node *elem;
     friend class sparse_matrix;
     // costruttore per iterare su struttura dati
-    explicit iterator(node *n) : elem(n) {}
-  public:
-    // typedef std::forward_iterator_tag iterator_category;
-    // typedef node value_type;
-    // typedef ptrdiff_t difference_type;
-    //typedef element* pointer;
-    //typedef element reference;
+    iterator(node *n) : elem(n) {}
     
+  public:
     //costruttori
     iterator() : elem(nullptr) {}
     iterator(const iterator &other) : elem(other.elem) {}
@@ -517,13 +516,6 @@ public:
       return *this;
     }
 
-    // elem& operator=(const iterator &other) {
-    //   elem = other.elem;
-     
-    //   elem *ret = new elem(elem->value, elem->i, elem->j);
-      
-    //   return *ret;
-    // }
     //distruttore
     ~iterator() {}
 
@@ -534,73 +526,36 @@ public:
       
     }
 
-    // elem& operator*() const{
-    //   //elem ret = elem(elem->value, elem->i, elem->j);
-    //       elem *ret = new elem(elem->value, elem->i, elem->j);
-
-    //   return ret;
-      
-    // }
-    
     typename node::element* operator->() const{
       
       return &*elem->ret;
     }
-
-    //  elem* operator->() const{
-    //       elem *ret = new elem(elem->value, elem->i, elem->j);
-
-    //   return &*ret;
-    // }
-    
+ 
     // override post e pre incremento
     iterator operator++(int) {
       iterator tmp(*this);
       elem = elem->next;
       return tmp;
     }
-
-    // elem& operator++(int) {
-    //   iterator tmp(*this);
-    //   elem = elem->next;
-    //   elem *ret = new elem(elem->value, elem->i, elem->j);
-
-    //   return *ret;
-    // }
     
     iterator operator++() {
-      // elem* res;
-     
       elem = elem->next;
       return *this;  
     }
 
-    // elem& operator++() {
-    //   // elem* res;
-    //   elem = elem->next;
-    //   elem *ret = new elem(elem->value, elem->i, elem->j);
-
-    //   return *ret;  
-    // }
     // override uguaglianza
-    
     bool operator==(const iterator &other) const {
       return (elem->ret->x == other->ret->x && elem->ret->y == other->ret->y);
     }
         
     bool operator!=(const iterator &other) const {
-      //return (iter->i != other->i && iter->j != other->j);
-      //return !(elem->ret->x == other->x && elem->ret->y == other->y);
       return (elem != other.elem);
-      
     }
-    
-  
-    
+
   };
 
-    /**
-     * @brief iteratore costante (in lettura) per sparse_matrix
+  /**
+   * @brief iteratore costante (in lettura) per sparse_matrix
    */
 
   class const_iterator{
@@ -610,14 +565,8 @@ public:
     friend class sparse_matrix;
 
     // costruttore per iterare su struttura dati
-    explicit const_iterator(node *n) : elem(n) {}
+    const_iterator(node *n) : elem(n) {}
   public:
-    // typedef std::forward_iterator_tag iterator_category;
-    // typedef node value_type;
-    // typedef ptrdiff_t difference_type;
-    // typedef node* pointer;
-    // typedef node& reference;
-    
     //costruttori
     const_iterator() : elem(nullptr) {}
     const_iterator(const const_iterator &other) : elem(other.elem) {}
@@ -633,11 +582,9 @@ public:
 
     // ovveride accesso
     const typename node::element operator*() const{
-      
       return elem->ret;
     }
     const typename node::element* operator->() const{
-      
       return &*elem->ret;
     }
     
@@ -649,28 +596,25 @@ public:
     }
     
     const_iterator operator++() {
-      // elem* res;
       elem = elem->next;
       return *this;  
     }
     
-    // override uguaglianza
+    // override uguaglianza e diversità
     bool operator==(const const_iterator &other) const {
       return (elem->ret->x == other->ret->x && elem->ret->y == other->ret->y);
     }
         
     bool operator!=(const const_iterator &other) const {
-      //return (iter->i != other->i && iter->j != other->j);
       return elem != other.elem;
     }
 
     friend class iterator;
-    // Uguaglianza
+    
+    // Uguaglianza e diversità con iterator
     bool operator==(const iterator &other) const {
       return elem == other.elem;
     }
-
-    // Diversita'
     bool operator!=(const iterator &other) const {
       return  elem != other.elem;
     }
@@ -688,15 +632,18 @@ public:
   };
   
   /**
-   * @brief iteratore alla testa della sparse_matrix
+   * @brief iteratore all'inizio della sparse_matrix
+   *
+   * @return iteratore alla head
    */
   iterator begin() {
-    // elem* ret = new elem(head->value, head->i, head->j);
     return iterator(head);
   }
 
-   /**
+  /**
    * @brief iteratore alla fine della sparse_matrix
+   *
+   * @return nullptr 
    */
   iterator end() {
     return iterator(nullptr);
@@ -704,13 +651,17 @@ public:
   
   /**
    * @brief iteratore costante alla testa della sparse_matrix
+   * 
+   * @return iteratore alla head
    */
   const_iterator begin() const {
     return const_iterator(head);
   }
 
-   /**
+  /**
    * @brief iteratore costante alla fine della sparse_matrix
+   *
+   * @return nullptr 
    */
   const_iterator end() const {
     return const_iterator(nullptr);
@@ -730,7 +681,9 @@ public:
     default_value(static_cast<T>(other.get_default_value())), dim(other.get_dim()),
     size_row(other.get_size_row()), size_column(other.get_size_column()),
     head(nullptr), size(0) {
-    
+
+    // mi muovo con gli iteratori nella matrice sparsa passata in ingresso
+    // effettuo la add alla nuova matrice sparsa con cast del valore
     typename sparse_matrix<Q>::const_iterator i, ie;
     i = other.begin();
     ie = other.end();
@@ -749,15 +702,15 @@ public:
 };
 
 /**
-   * @brief costruttore copia con cast
-   *
-   * @tparam Q tipo della matrice per cast Q->T
-   *
-   * @param other altra sparse_matrix con valori di tipo Q
-   *
-   * @throw NoCastSparseMatrixException() eccezione cast fallito
-   * @throw NegativeIndexSparseMatrixException() indici negativi   
-   */
+ * @brief costruttore copia con cast
+ *
+ * @tparam Q tipo della matrice per cast Q->T
+ *
+ * @param other altra sparse_matrix con valori di tipo Q
+ *
+ * @throw NoCastSparseMatrixException() eccezione cast fallito
+ * @throw NegativeIndexSparseMatrixException() indici negativi   
+ */
 template <typename T>
 void printdef(sparse_matrix<T> smatrix, int n, int m){
   if(n < 0 || m < 0)
@@ -786,19 +739,19 @@ std::ostream &operator<<(std::ostream &os,
 	
   i = smatrix.begin();
   ie = smatrix.end();
-  // evito overflow se provo a stampare il nulla
+  // evito overflow se provo a stampare su una matrice nulla
   if(smatrix.get_size() == 0)
     return os;
+  // mi salvo il numero di riga per andare a capo
   int prevrow = i->x;
+  
   while(i!=ie) {
     if(i->x != prevrow)
       std::cout << std::endl;
     os << i->v << "\t";
-    
     prevrow = i->x;
     ++i;
   }
-  
   return os;
 }
 

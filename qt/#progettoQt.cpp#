@@ -131,12 +131,10 @@ void progettoQt::httpDownloadFinished() {
 		      );
     // ingrandisco la box dell'url e sposto il bottone dopo aver
     // ingrandito il widget (mi baso sulla dimensione della box del testo
-    // da visualizzare più la distanza "dis" di default che
-    // c'era tra bottone e url box)
-    int dis = ui->analyzeButton->pos().x() - ui->urlBox->size().width();
-
+    // da visualizzare più un minimo di spaziatura tra bottone e box dell'url)
+    int dis = ui->analyzeButton->pos().x() - ui->urlBox->size().width()
     ui->urlBox->resize(ui->textBrowser->size().width() -
-               ui->analyzeButton->size().width() - dis,
+		       ui->analyzeButton->size().width() - dis,
 		       ui->urlBox->size().height());
     ui->analyzeButton->move(ui->urlBox->size().width() + dis,
 			    ui->analyzeButton->pos().y());

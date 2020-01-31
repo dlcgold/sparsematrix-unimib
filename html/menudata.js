@@ -13,13 +13,9 @@ var menudata={children:[
 {text:"e",url:"functions.html#index_e"},
 {text:"g",url:"functions.html#index_g"},
 {text:"i",url:"functions.html#index_i"},
-{text:"n",url:"functions.html#index_n"},
 {text:"o",url:"functions.html#index_o"},
 {text:"p",url:"functions.html#index_p"},
 {text:"s",url:"functions.html#index_s"},
-{text:"v",url:"functions.html#index_v"},
-{text:"x",url:"functions.html#index_x"},
-{text:"y",url:"functions.html#index_y"},
 {text:"~",url:"functions.html#index_0x7e"}]},
 {text:"Funzioni",url:"functions_func.html",children:[
 {text:"a",url:"functions_func.html#index_a"},
@@ -32,11 +28,9 @@ var menudata={children:[
 {text:"p",url:"functions_func.html#index_p"},
 {text:"s",url:"functions_func.html#index_s"},
 {text:"~",url:"functions_func.html#index_0x7e"}]},
-{text:"Variabili",url:"functions_vars.html"},
 {text:"Funzioni collegate",url:"functions_rela.html"}]}]},
 {text:"File",url:"files.html",children:[
 {text:"Elenco dei file",url:"files.html"},
 {text:"Elementi dei file",url:"globals.html",children:[
 {text:"Tutto",url:"globals.html"},
-{text:"Funzioni",url:"globals_func.html"},
-{text:"Ridefinizioni di tipo (typedef)",url:"globals_type.html"}]}]}]}
+{text:"Funzioni",url:"globals_func.html"}]}]}]}

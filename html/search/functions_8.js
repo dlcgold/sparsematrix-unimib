@@ -1,6 +1,4 @@
 var searchData=
 [
-  ['point',['point',['../structpoint.html#ae3ea6069972ff26050dc8469d4765a0a',1,'point']]],
-  ['print',['print',['../classsparse__matrix.html#ab88c766f7deb3769dfe0e4478aa25210',1,'sparse_matrix']]],
-  ['printdef',['printdef',['../sparsematrix_8hpp.html#a26dc06f256bf0d8126beaf01d0a04cee',1,'sparsematrix.hpp']]]
+  ['sparse_5fmatrix',['sparse_matrix',['../classsparse__matrix.html#ae113bb914d2c00cc0fad5051c9584212',1,'sparse_matrix::sparse_matrix(T dvalue)'],['../classsparse__matrix.html#af4da17fced2c074b1ad2111a900bfe50',1,'sparse_matrix::sparse_matrix(T dvalue, int row, int column)'],['../classsparse__matrix.html#a5b77defd06a5911cf8d7f4b2a658a1d9',1,'sparse_matrix::sparse_matrix(const sparse_matrix &amp;other)'],['../classsparse__matrix.html#a34c01d3cd832cad713619208512a739d',1,'sparse_matrix::sparse_matrix(const sparse_matrix&lt; Q &gt; &amp;other)']]]
 ];

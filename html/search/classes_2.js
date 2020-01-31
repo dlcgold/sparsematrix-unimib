@@ -1,6 +1,8 @@
 var searchData=
 [
-  ['indexoutofboundsexception',['IndexOutOfBoundsException',['../class_index_out_of_bounds_exception.html',1,'']]],
-  ['is_5fdefaultf',['is_defaultf',['../structis__defaultf.html',1,'']]],
-  ['iterator',['iterator',['../classsparse__matrix_1_1iterator.html',1,'sparse_matrix']]]
+  ['negativedimensionsparsematrixexception',['NegativeDimensionSparseMatrixException',['../class_negative_dimension_sparse_matrix_exception.html',1,'']]],
+  ['negativeindexsparsematrixexception',['NegativeIndexSparseMatrixException',['../class_negative_index_sparse_matrix_exception.html',1,'']]],
+  ['nocastsparsematrixexception',['NoCastSparseMatrixException',['../class_no_cast_sparse_matrix_exception.html',1,'']]],
+  ['nonodeexception',['noNodeException',['../classno_node_exception.html',1,'']]],
+  ['nosparsematrixexception',['NoSparseMatrixException',['../class_no_sparse_matrix_exception.html',1,'']]]
 ];

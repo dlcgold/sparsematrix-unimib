@@ -1,7 +1,7 @@
 #include <iostream>
 #include <string>
 #include <cassert>
-#include "sparsematrix.hpp"
+#include "sparsematrix.h"
 
 
 struct point{
@@ -129,18 +129,27 @@ void test_point(){
   std::cout << "valori accettabili: " << count << " = 2\n";
   testpp.clear();
 }
-int main(){
-  test_fondamentali();
-  smatrixi costante(0);
-  test_vuota(costante);
-  //test_point();
+
+void test_duplicati(){
+  std::cout << "\ntest inserimento duplicati\n";
   smatrixi testM(0);
   testM.add(1, 0, 0);
   testM.add(2, 1, 2);
   testM.add(5, 0, 0);
-  testM.add(5, 0, 0);
+  testM.add(2, 1, 2);
+
+  testM.add(4, 0, 0);
   testM.add(5, 0, 0);
   testM.print();
+  assert(testM.get_size() == 2);
+  std::cout << "test duplicati superato\n";
   testM.clear();
+}
+int main(){
+  test_fondamentali();
+  smatrixi costante(0);
+  test_vuota(costante);
+  test_point();
+  test_duplicati();
   return 0;
 }

@@ -79,7 +79,7 @@ Si hanno poi, ovviamente, le implementazioni dei metodi *getter*.
 Per quanto riguarda il distruttore si ha che esso chiama un metodo
 pubblico `clear()` che si appoggia ad un metodo privato
 `recursive_clear(head)`, che, partendo appunto dal primo elemento, setta
-a `nullptr` i nodi raggiungibili da `head`, settando, infine, anche
+a `nullptr` i nodi raggiungibili da `head` e le corrispondenti struct, settando, infine, anche
 `head` a `nullptr`. Il metodo `clear()` è pubblico in quanto permette
 all’utente di eliminare una `sparse_matrix` da lui creata, evitando
 quindi di incorrere in *memory leaks*.
@@ -193,3 +193,4 @@ tra iteratori.
 Vengono poi effettuati test simili su una matrice, di dimensioni non
 specificate, dove non vengono però aggiunti valori e su una
 `sparse_matrix` definita su un tipo custom `point`.
+Viene effettuato anche un test di inserimento duplicati.

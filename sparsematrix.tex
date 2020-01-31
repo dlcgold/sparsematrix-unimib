@@ -148,7 +148,8 @@ Per quanto riguarda il distruttore si ha che esso chiama un metodo
 pubblico \texttt{clear()} che si appoggia ad un metodo privato
 \texttt{recursive\_clear(head)}, che, partendo appunto dal primo
 elemento, setta a \texttt{nullptr} i nodi raggiungibili da
-\texttt{head}, settando, infine, anche \texttt{head} a
+\texttt{head} e le corrispondenti struct contenenti i valori,
+ settando, infine, anche \texttt{head} a
 \texttt{nullptr}. Il metodo \texttt{clear()} è pubblico in quanto
 permette all'utente di eliminare una \texttt{sparse\_matrix} da lui
 creata, evitando quindi di incorrere in \textit{memory leaks}.
@@ -252,5 +253,6 @@ costruzione di una nuova \texttt{sparse\_matrix} mediante
 \texttt{sparse\_matrix} e l'assegnamento tra iteratori.\\
 Vengono poi effettuati test simili su una matrice, di dimensioni non
 specificate, dove non vengono però aggiunti valori e su una
-\texttt{sparse\_matrix} definita su un tipo custom \texttt{point}.
+\texttt{sparse\_matrix} definita su un tipo custom \texttt{point}.\\
+Viene effettuato anche un test di inserimento duplicati.
 \end{document}

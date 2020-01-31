@@ -132,6 +132,11 @@ private:
     } *ret;
 
     /**
+     * @brief costruttore di defaul 
+     */
+    node(): next(nullptr){}
+    
+    /**
      * @brief costruttore del nodo senza nodo successivo
      *
      * @param v valore della cella
@@ -237,7 +242,7 @@ public:
   }
   
   /**
-   * @brief costruttore della matrice di dimensioni indefinite
+   * @brief costruttore di default della matrice di dimensioni indefinite
    *
    * @param dvalue valore di default obbligatorio
    */

@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99998 (TeX Live 2017/Debian) (preloaded format=xelatex 2019.11.24)  28 JAN 2020 09:40
+This is XeTeX, Version 3.14159265-2.6-0.99998 (TeX Live 2017/Debian) (preloaded format=xelatex 2019.11.24)  31 JAN 2020 10:59
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -1405,6 +1405,8 @@ Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 LaTeX Info: Redefining \ref on input line 64.
 LaTeX Info: Redefining \pageref on input line 64.
 LaTeX Info: Redefining \nameref on input line 64.
+
+(./sparsematrix.out) (./sparsematrix.out)
 \@outlinefile=\write7
 \openout7 = `sparsematrix.out'.
 
@@ -1506,34 +1508,34 @@ File: se-ascii-print.def 2016/05/16 v1.11 stringenc: Printable ASCII characters
 [1
 
 ] [2]
-Overfull \hbox (20.12305pt too wide) in paragraph at lines 165--167
+Overfull \hbox (20.12305pt too wide) in paragraph at lines 170--172
 []\TU/lmr/m/n/12 l’\TU/lmtt/m/n/12 head \TU/lmr/m/n/12 attuale si trova sulla s
 tessa riga teorica dell’elemento
  []
 
 [3]
-Overfull \hbox (4.92004pt too wide) in paragraph at lines 193--231
+Overfull \hbox (4.92004pt too wide) in paragraph at lines 198--236
 \TU/lmr/m/n/12 L’eventuale inserimento di valori fuori indice viene gestito tra
 mite un’eccezione
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 193--231
+Underfull \hbox (badness 10000) in paragraph at lines 198--236
 
  []
 
 [4] [5]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 237.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 237.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 242.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 242.
  (./sparsematrix.aux)
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 237.
-Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 237.
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 242.
+Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 242.
  ) 
 Here is how much of TeX's memory you used:
- 43204 strings out of 493007
- 928817 string characters out of 6136718
- 1268456 words of memory out of 5000000
- 46401 multiletter control sequences out of 15000+600000
+ 43208 strings out of 493007
+ 928881 string characters out of 6136718
+ 1268524 words of memory out of 5000000
+ 46402 multiletter control sequences out of 15000+600000
  6679 words of font info for 36 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
  62i,6n,103p,800b,608s stack positions out of 5000i,500n,10000p,200000b,80000s

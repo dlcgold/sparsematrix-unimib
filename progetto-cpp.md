@@ -1,10 +1,9 @@
 Sparse Matrix
 ---
     
-    |Davide Cozzi            |
-	|                        |
-    |829827                  |
-    |d.cozzi@campus.unimib.it|
+* Davide Cozzi            
+* 829827                  
+* d.cozzi@campus.unimib.it
 	
 ---
 

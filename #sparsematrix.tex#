@@ -236,5 +236,7 @@ restituendo il risultato.
 \newpage
 \section*{Test}
 Il primo test viene effettuando generando una \texttt{sparse_matrix}
-con valori di tipo \texttt{float} di dimensione definita $3\times 4$
+con valori di tipo \texttt{float} di dimensione definita $3\times
+3$. Vengono testati metodi che ritornano il numero di righe e di
+colonne 
 \end{document}

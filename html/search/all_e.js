@@ -1,6 +1,4 @@
 var searchData=
 [
-  ['_7econst_5fiterator',['~const_iterator',['../classsparse__matrix_1_1const__iterator.html#a19df9ab480099b277b8d998ac1a36126',1,'sparse_matrix::const_iterator']]],
-  ['_7eiterator',['~iterator',['../classsparse__matrix_1_1iterator.html#a0517e8d7304fba3fc5d0ba2250406c89',1,'sparse_matrix::iterator']]],
-  ['_7esparse_5fmatrix',['~sparse_matrix',['../classsparse__matrix.html#a376c1d4abca1efa1ffa3c346ea82036d',1,'sparse_matrix']]]
+  ['y',['y',['../structelemr.html#a9b4360eff958b768d5a83e680345712d',1,'elemr::y()'],['../structsparse__matrix_1_1node_1_1element.html#af3ff3c99d72c17bf3ad6303dad010baa',1,'sparse_matrix::node::element::y()']]]
 ];

@@ -2,7 +2,6 @@
 #define progettoQT_H
 
 #include <QWidget>
-#include <QDialog>
 #include <QNetworkAccessManager>
 #include <QNetworkRequest>
 #include <QNetworkReply>

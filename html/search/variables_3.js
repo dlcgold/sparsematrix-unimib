@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['element',['element',['../classsparse__matrix_1_1iterator.html#a70695df47f45af0d755c37bbdf62fe96',1,'sparse_matrix::iterator::element()'],['../classsparse__matrix_1_1const__iterator.html#a5f9a1407799667310a1d2741075450a0',1,'sparse_matrix::const_iterator::element()']]]
+  ['x',['x',['../structelemr.html#acf74f001ebc7f7849b8e7390f281bdcb',1,'elemr::x()'],['../structsparse__matrix_1_1node_1_1element.html#a4b7965cb0d363c7532ca163721a3d9bb',1,'sparse_matrix::node::element::x()']]]
 ];

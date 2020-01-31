@@ -1,6 +1,7 @@
 var annotated_dup =
 [
     [ "element", "structelement.html", "structelement" ],
+    [ "elemr", "structelemr.html", "structelemr" ],
     [ "IndexOutOfBoundsException", "class_index_out_of_bounds_exception.html", null ],
     [ "is_defaultf", "structis__defaultf.html", "structis__defaultf" ],
     [ "NegativeDimensionSparseMatrixException", "class_negative_dimension_sparse_matrix_exception.html", null ],

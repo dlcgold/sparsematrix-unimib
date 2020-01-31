@@ -10,12 +10,7 @@ struct point{
   point(int xx, int yy) : a(xx), b(yy) {}
 };
 
-template<typename T>
-struct element{
-  T value;
-  int a;
-  int b;
-};
+
 
 struct positive {
   bool operator()(int a) const {
@@ -43,6 +38,8 @@ typedef sparse_matrix<float> smatrixf;
 void test_fondamentali(){
   std::cout << "test matrice float 3x3 (valore default 0)\n";
   smatrixf floatNM(0, 3, 3);
+  std::cout << floatNM.get_size_column();
+  //floatNM.add(4, 2, 2);
   
   for(int i = 0; i < 3; i++){
     for(int j = 0; j < 3; j++){
@@ -54,16 +51,18 @@ void test_fondamentali(){
 	}
       }
     }
-  }
-  std::cout << floatNM(1,2);
-  //floatNM.add(-4, -3, -3);
-  
+  }/*
+  assert(floatNM.get_size_row() == 3);
+  assert(floatNM.get_size_column() == 3);
+  assert(floatNM.get_size_row() == 3);
+  assert(floatNM.get_size_column() == 3);
   std::cout << "\ntest stampa matrice float con accesso mediante operator()\n";
   printdef(floatNM, floatNM.get_max_row(), floatNM.get_max_column());
   
   positive pos;
   int count = evaluate(floatNM, pos);
   std::cout << "\ntest evaluate (numero positivi) matrice float \n";
+  assert(count == 2);
   std::cout << count << " = " << 2 << "\n";
   std::cout << "\ntest stampa matrice float con accesso mediante iteratore\n";
   smatrixf::iterator i, ie;
@@ -77,6 +76,7 @@ void test_fondamentali(){
   
   count = evaluate(interaNM, pos);
   std::cout << "\ntest evaluate (numero positivi) matrice intera \n";
+  assert(count == 2);
   std::cout << count << " = " << 2 << "\n";
   std::cout << "\ntest stampa matrice intera con accesso mediante iteratore\n";
   smatrixi::iterator iu, ieu;
@@ -94,15 +94,17 @@ void test_fondamentali(){
   
  
   
-  
+  */
 }
-
-void test_costante(const smatrixi costante){
-  std::cout << "\n\ntest stampa matrice costante\n";
-  std::cout << costante << std::endl;
-  std::cout << "\ntest evaluate matrice costante\n";
+/*
+void test_vuota(const smatrixi vuota){
+  std::cout << "\n\ntest stampa matrice vuota\n";
+  std::cout << vuota << std::endl;
+  std::cout << "\ntest evaluate matrice vuota\n";
   positive pos;
-  std::cout << "valori accettabili: " << evaluate(costante, pos) << "\n";
+  int count = evaluate(vuota, pos);
+  assert(count == 0);
+  std::cout << "valori accettabili: " << count << "\n";
 }
 
 void test_point(){
@@ -122,9 +124,11 @@ void test_point(){
   for(ip=testpp.begin(), iep=testpp.end(); ip!=iep; ip++)
     std::cout << ip->v.a << ", " << ip->v.b << std::endl;
   pointxMax max;
-  std::cout << "valori accettabili: " << evaluate(testpp, max) << " = 2\n";
+  int count = evaluate(testpp, max);
+  assert(count == 2);
+  std::cout << "valori accettabili: " << count << " = 2\n";
   testpp.clear();
-}
+}*/
 int main(){
   
   /*test.add(-90, 830, 10);
@@ -213,8 +217,8 @@ int main(){
   std::cout << "ho " << evaluate(test4, defF) << " elementi di default";*/
 
   test_fondamentali();
-  smatrixi costante(0);
-  test_costante(costante);
-  test_point();
+  // smatrixi costante(0);
+  // test_vuota(costante);
+  // test_point();
   return 0;
 }

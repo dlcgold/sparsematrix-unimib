@@ -62,19 +62,23 @@ class NegativeDimensionSparseMatrixException: public std::exception {
         return "indice negativo";
     }
 };
+
+/**
+ * @brief tentativo creare nodo fallito
+ * 
+ * @return eccezione
+ */
+class  noNodeException: public std::exception {
+    virtual const char* what() const throw() {
+        return "indice negativo";
+    }
+};
+
 /**
  * @brief Classe sparse_matrix per matrice sparsa
  *
  * @tparam T tipo dei valori della matrice
  */
-template <typename T>
-struct elemr{
-  T v;
-  const int x;
-  const int y;
-  elemr(T value, const int i, const int j): v(value), x(i), y(j){}
-};
-
 template <typename T>
 class sparse_matrix{
 private:
@@ -121,7 +125,6 @@ private:
      */
     node *next;
     
-  public:
     /**
      * @brief struct che definisce l'elemento
      */
@@ -131,8 +134,7 @@ private:
       const int x;
       const int y;
       element(const T &value, const int i, const int j): v(value), x(i), y(j){}
-      friend class node;
-      ~element(){}
+      
     } *ret;
     
     //element *ret;
@@ -147,7 +149,11 @@ private:
     //node(const T &v, const int x, const int y): next(nullptr), value(v),
     //	i(x), j(y){}
     node(const T &v, const int x, const int y): next(nullptr){
-     ret = new element(v, x, y);
+      try{
+	ret = new element(v, x, y);
+      }catch(...){
+	throw noNodeException{};
+      }
     }
     
     /**
@@ -215,15 +221,6 @@ public:
     return max_column;
   }
 
-  /**
-   * @brief getter dell'elemo di testa
-   *
-   * @return testa di sparse_matrix
-   */
-  const node* get_head() const {
-    return head;
-  }
-
    /**
    * @brief getter del valore di default
    *
@@ -264,8 +261,8 @@ public:
    *
    * @param dvalue valore di default obbligatorio
    */
-  sparse_matrix(T dvalue): default_value(dvalue), max_row(INT_MAX),
-			   max_column(INT_MAX), size_row(0), size_column(0),
+  explicit sparse_matrix(T dvalue): default_value(dvalue), max_row(INT_MAX),
+			   max_column(INT_MAX), size_row(INT_MAX), size_column(INT_MAX),
 			   head(nullptr), size(0){};
 
 
@@ -279,8 +276,8 @@ public:
    * @throw NegativeDimensionSparseMatrixException() per dimensioni negative
    */
   sparse_matrix(T dvalue, int row, int column):
-    default_value(dvalue), max_row(row), max_column(column), size_row(0),
-    size_column(0), head(nullptr), size(0){
+    default_value(dvalue), max_row(0), max_column(0), size_row(row),
+    size_column(column), head(nullptr), size(0){
     if(row < 0 || column < 0)
       NegativeDimensionSparseMatrixException();
   };
@@ -333,11 +330,14 @@ public:
   void add(const T &v, const int i, const int j) {
     if(i < 0 || j < 0)
       throw  NegativeIndexSparseMatrixException();
-    if((i < max_row) && (j < max_column)){
-      
-      node *elem = new node(v, i, j);
-      // std::cout << elem->ret->x;
-      
+    std::cout << size_row << "\n";
+    if((i < this->get_size_row()) && (j < this->get_size_column())){
+      node *elem;
+      try{
+	elem = new node(v, i, j);
+      }catch(...){
+	throw noNodeException{};
+      }
       
       node *temp = head;
       size++;
@@ -407,16 +407,14 @@ public:
       iter = iter->next;
     }
     size_row = max_row_current;
-    size_column = max_column_current;
-    return;
-    
+    size_column = max_column_current;    
   }
 
   /**
    * @brief stampa lineare degli elemi
    *
    */
-  void print(){
+  void print() const{
     node *current = head;
     while(current != nullptr){
       std::cout << current->ret->v << " in (" << current->ret->x << ", " << current->ret->y
@@ -471,7 +469,7 @@ public:
     recursive_clear(head);
     //delete head->ret;
     head = nullptr;
-    return;
+    
   }
 
   /**
@@ -521,7 +519,7 @@ public:
     node *elem;
     friend class sparse_matrix;
     // costruttore per iterare su struttura dati
-    iterator(node *n) : elem(n) {}
+    explicit iterator(node *n) : elem(n) {}
   public:
     // typedef std::forward_iterator_tag iterator_category;
     // typedef node value_type;
@@ -633,7 +631,7 @@ public:
     friend class sparse_matrix;
 
     // costruttore per iterare su struttura dati
-    const_iterator(node *n) : elem(n) {}
+    explicit const_iterator(node *n) : elem(n) {}
   public:
     // typedef std::forward_iterator_tag iterator_category;
     // typedef node value_type;
@@ -785,7 +783,7 @@ public:
 template <typename T>
 void printdef(sparse_matrix<T> smatrix, int n, int m){
   if(n < 0 || m < 0)
-    NegativeIndexSparseMatrixException();
+    throw NegativeIndexSparseMatrixException();
   for(int i = 0; i < n; i++){
     for(int j = 0; j < m; j++){
       std::cout << smatrix(i, j) << " ";
@@ -811,7 +809,7 @@ std::ostream &operator<<(std::ostream &os,
   i = smatrix.begin();
   ie = smatrix.end();
   // evito overflow se provo a stampare il nulla
-  if(smatrix.get_head()==nullptr)
+  if(smatrix.get_size() == 0)
     return os;
   int prevrow = i->x;
   while(i!=ie) {
@@ -840,7 +838,7 @@ int evaluate(const sparse_matrix<T> &smatrix, P pred) {
 
   typename sparse_matrix<T>::const_iterator i, ie;
   int count = 0;
-  if(smatrix.get_head()==nullptr) return count;
+  if(smatrix.get_size() == 0) return count;
   i = smatrix.begin();
   ie = smatrix.end();
 	

@@ -84,15 +84,12 @@ $(document).ready(function(){initNavTree('md_progetto-cpp.html','');});
 <div class="title">Sparse Matrix </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><table class="doxtable">
-<tr>
-<th>Davide Cozzi  </th></tr>
-<tr>
-<td>829827 </td></tr>
-<tr>
-<td><a href="#" onclick="location.href='mai'+'lto:'+'d.c'+'oz'+'zi@'+'ca'+'mpu'+'s.'+'uni'+'mi'+'b.i'+'t'; return false;">d.coz<span style="display: none;">.nosp@m.</span>zi@c<span style="display: none;">.nosp@m.</span>ampus<span style="display: none;">.nosp@m.</span>.uni<span style="display: none;">.nosp@m.</span>mib.i<span style="display: none;">.nosp@m.</span>t</a> </td></tr>
-</table>
-<hr/>
+<div class="textblock"><ul>
+<li>Davide Cozzi</li>
+<li>829827</li>
+<li><a href="#" onclick="location.href='mai'+'lto:'+'d.c'+'oz'+'zi@'+'ca'+'mpu'+'s.'+'uni'+'mi'+'b.i'+'t'; return false;">d.coz<span style="display: none;">.nosp@m.</span>zi@c<span style="display: none;">.nosp@m.</span>ampus<span style="display: none;">.nosp@m.</span>.uni<span style="display: none;">.nosp@m.</span>mib.i<span style="display: none;">.nosp@m.</span>t</a> <hr/>
+</li>
+</ul>
 <h1>La Struttura Dati </h1>
 <p>Ragionando sulla consegna del progetto ho concluso che il modo migliore per implementare una <b>sparse matrix</b> fosse quello di utilizzare una variante della <em>linked list</em>, dove gli elementi vengono caricati secondo l’ordine di due indici (che rappresentano la posizione di una cella in una matrice di implementazione classica). L’uso di questa variante della <em>linked list</em> permette di salvare in memoria solamente i valori indicati dall’utente (ognuno nella posizione desiderata).</p>
 <p>In questa implementazione ogni della <b>sparse matrix</b> contiene:</p>
@@ -101,8 +98,8 @@ $(document).ready(function(){initNavTree('md_progetto-cpp.html','');});
 <li>il valore che deve essere salvato</li>
 <li>i due indici mediante i quali, logicamente, accedere al valore. I due indici sono definiti <code>const</code> in quanto non modificabili dopo la creazione della cella</li>
 </ul>
-<p>Per questa <em>sottoclasse</em> <code>node</code> viene implementato un <em>costruttore</em> che genera un node a partire dal valore che si vuole aggiungere e dalla posizione in cui lo si vorrebbe aggiungere, senza specificare (e impostandolo di default a <code>nullptr</code>) il <code>node</code> successivo, e, ovviamente, viene implementato il <em>distruttore</em>, che si limita a settare a <code>nullptr</code> il nodo successivo (questo perché la distruzione dell’intera struttura dati viene implementata nel <em>distruttore</em> di <code><a class="el" href="classsparse__matrix.html" title="Classe sparse_matrix per matrice sparsa. ">sparse_matrix</a></code>).</p>
-<p>Parliamo ora della struttura dati completa, chiamata <code><a class="el" href="classsparse__matrix.html" title="Classe sparse_matrix per matrice sparsa. ">sparse_matrix</a></code>. Si hanno una serie di attributi privati necessari per il corretto funzionamento della stessa:</p>
+<p>Per questa <em>sottoclasse</em> <code>node</code> viene implementato un <em>costruttore</em> che genera un node a partire dal valore che si vuole aggiungere e dalla posizione in cui lo si vorrebbe aggiungere, senza specificare (e impostandolo di default a <code>nullptr</code>) il <code>node</code> successivo, e, ovviamente, viene implementato il <em>distruttore</em>, che si limita a settare a <code>nullptr</code> il nodo successivo (questo perché la distruzione dell’intera struttura dati viene implementata nel <em>distruttore</em> di <code><a class="el" href="classsparse__matrix.html">sparse_matrix</a></code>).</p>
+<p>Parliamo ora della struttura dati completa, chiamata <code><a class="el" href="classsparse__matrix.html">sparse_matrix</a></code>. Si hanno una serie di attributi privati necessari per il corretto funzionamento della stessa:</p>
 <ul>
 <li>il valore di default scelto obbligatoriamente dall’utente al monento della creazione di una matrice sparsa</li>
 <li>indicazioni riguardanti il numero di righe e colonne</li>
@@ -113,11 +110,11 @@ $(document).ready(function(){initNavTree('md_progetto-cpp.html','');});
 <ul>
 <li>si ha innanzitutto il costruttore base con solo l’indicazione di default, senza quindi indicazone delle dimensioni della matrice (che diventa, a livello teorico, una matrice quadrata di massima dimensione intera al quadrato)</li>
 <li>il costruttore di una matrice sparsa di dimensione teorica definita dall’utente</li>
-<li>costruttore copia a partire da un’altra <code><a class="el" href="classsparse__matrix.html" title="Classe sparse_matrix per matrice sparsa. ">sparse_matrix</a></code> definita sullo stesso tipo</li>
-<li>costruttore copia a partire da un’altra <code><a class="el" href="classsparse__matrix.html" title="Classe sparse_matrix per matrice sparsa. ">sparse_matrix</a></code> definita su un altro tipo (con controllo del cast delegato, secondo specifiche, al compilatore)</li>
+<li>costruttore copia a partire da un’altra <code><a class="el" href="classsparse__matrix.html">sparse_matrix</a></code> definita sullo stesso tipo</li>
+<li>costruttore copia a partire da un’altra <code><a class="el" href="classsparse__matrix.html">sparse_matrix</a></code> definita su un altro tipo (con controllo del cast delegato, secondo specifiche, al compilatore)</li>
 </ul>
 <p>Si hanno poi, ovviamente, le implementazioni dei metodi <em>getter</em>.</p>
-<p>Per quanto riguarda il distruttore si ha che esso chiama un metodo pubblico <code>clear()</code> che si appoggia ad un metodo privato <code>recursive_clear(head)</code>, che, partendo appunto dal primo elemento, setta a <code>nullptr</code> i nodi raggiungibili da <code>head</code>, settando, infine, anche <code>head</code> a <code>nullptr</code>. Il metodo <code>clear()</code> è pubblico in quanto permette all’utente di eliminare una <code><a class="el" href="classsparse__matrix.html" title="Classe sparse_matrix per matrice sparsa. ">sparse_matrix</a></code> da lui creata, evitando quindi di incorrere in <em>memory leaks</em>.</p>
+<p>Per quanto riguarda il distruttore si ha che esso chiama un metodo pubblico <code>clear()</code> che si appoggia ad un metodo privato <code>recursive_clear(head)</code>, che, partendo appunto dal primo elemento, setta a <code>nullptr</code> i nodi raggiungibili da <code>head</code>, settando, infine, anche <code>head</code> a <code>nullptr</code>. Il metodo <code>clear()</code> è pubblico in quanto permette all’utente di eliminare una <code><a class="el" href="classsparse__matrix.html">sparse_matrix</a></code> da lui creata, evitando quindi di incorrere in <em>memory leaks</em>.</p>
 <h1>Funzioni Principali </h1>
 <p>Ovviamente il primo discorso da affrontare è l’aggiunta di un determinato elemento in una certa posizione della nostra matrice sparsa, che viene gestito da un metodo <code>add(valore, posizione_x, posizione_y)</code>. Si hanno diverse possibili situazioni per l’inserimento di un nuovo valore:</p>
 <ul>

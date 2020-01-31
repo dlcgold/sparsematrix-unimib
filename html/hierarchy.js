@@ -2,6 +2,8 @@ var hierarchy =
 [
     [ "sparse_matrix< T >::const_iterator", "classsparse__matrix_1_1const__iterator.html", null ],
     [ "element< T >", "structelement.html", null ],
+    [ "sparse_matrix< T >::node::element", "structsparse__matrix_1_1node_1_1element.html", null ],
+    [ "elemr< T >", "structelemr.html", null ],
     [ "exception", null, [
       [ "IndexOutOfBoundsException", "class_index_out_of_bounds_exception.html", null ],
       [ "NegativeDimensionSparseMatrixException", "class_negative_dimension_sparse_matrix_exception.html", null ],

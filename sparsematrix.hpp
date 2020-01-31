@@ -93,14 +93,14 @@ private:
    * @brief numero massimo di righe, eventualmente scelto dall'utente
    *
    */
-  int max_row;
+  // int max_row;
   
   /**
    * @brief numero massimo di colonne, eventualmente scelto dall'utente
    *
    */
-  int max_column;
-
+  //int max_column;
+ 
   /**
    * @brief numero di righe
    *
@@ -208,18 +208,18 @@ public:
    *
    * @return massimo numero di righe di sparse_matrix
    */
-  int get_max_row() const {
-    return max_row;
-  }
+  // int get_max_row() const {
+  //   return max_row;
+  // }
 
   /**
    * @brief getter del numero massimo di colonne
    *
    * @return massimo numero di colonne di sparse_matrix
    */
-  int get_max_column() const {
-    return max_column;
-  }
+  // int get_max_column() const {
+  //   return max_column;
+  // }
 
    /**
    * @brief getter del valore di default
@@ -261,13 +261,13 @@ public:
    *
    * @param dvalue valore di default obbligatorio
    */
-  explicit sparse_matrix(T dvalue): default_value(dvalue), max_row(INT_MAX),
-			   max_column(INT_MAX), size_row(INT_MAX), size_column(INT_MAX),
+  explicit sparse_matrix(T dvalue): default_value(dvalue), size_row(INT_MAX),
+				    size_column(INT_MAX),
 			   head(nullptr), size(0){};
 
 
   /**
-   * @brief costruttore della matrice di dimensioni definite
+   * @brief costruttore della matrice di dimensioni definite					    
    *
    * @param dvalue valore di default obbligatorio
    * @param row numero di righe
@@ -276,7 +276,7 @@ public:
    * @throw NegativeDimensionSparseMatrixException() per dimensioni negative
    */
   sparse_matrix(T dvalue, int row, int column):
-    default_value(dvalue), max_row(0), max_column(0), size_row(row),
+    default_value(dvalue), size_row(row),
     size_column(column), head(nullptr), size(0){
     if(row < 0 || column < 0)
       NegativeDimensionSparseMatrixException();
@@ -299,23 +299,14 @@ public:
       std::swap(head, tmp.head);
       std::swap(size, tmp.size);
       std::swap(default_value, tmp.default_value);
-      std::swap(max_row, tmp.max_row);
-      std::swap(max_column, tmp.max_column);
+      // std::swap(max_row, tmp.max_row);
+      // std::swap(max_column, tmp.max_column);
       std::swap(size_row, tmp.size_row);
       std::swap(size_column, tmp.size_column);
     }
     return *this;
   }
 
-  /*bool find(unsigned int i, unsigned int j) const{
-    node *current = head;
-    while(current != nullptr){
-      if(current->i == i && current->j == j)
-	return true;
-      current = current->next;
-    }
-    return false;
-  }*/
   
   /**
    * @brief aggiunta di un elemo e calcolo righe e colonne attuali
@@ -330,8 +321,8 @@ public:
   void add(const T &v, const int i, const int j) {
     if(i < 0 || j < 0)
       throw  NegativeIndexSparseMatrixException();
-    std::cout << size_row << "\n";
-    if((i < this->get_size_row()) && (j < this->get_size_column())){
+    if(!((size_row==INT_MAX) && (size_column== INT_MAX)) ||
+       ((i < size_row) && (j < size_column))){
       node *elem;
       try{
 	elem = new node(v, i, j);
@@ -393,21 +384,23 @@ public:
       }
     }else{
       throw IndexOutOfBoundsException();
-      }
-    // conto massima riga e colonna
-    
-    int max_row_current = 0;
-    int max_column_current = 0;
-    node *iter = head;
-    while(iter != nullptr){
-      if(iter->ret->x > max_row_current)
-	max_row_current = iter->ret->x;
-      if(iter->ret->y > max_column_current)
-	max_column_current = iter->ret->y;
-      iter = iter->next;
     }
-    size_row = max_row_current;
-    size_column = max_column_current;    
+    // conto massima riga e colonna
+    if(size_row==INT_MAX && size_column==INT_MAX){
+      int max_row_current = 0;
+      int max_column_current = 0;
+      node *iter = head;
+      while(iter != nullptr){
+	if(iter->ret->x > max_row_current)
+	  max_row_current = iter->ret->x;
+	if(iter->ret->y > max_column_current)
+	  max_column_current = iter->ret->y;
+	iter = iter->next;
+      }
+      size_row = max_row_current;
+      size_column = max_column_current;
+    }
+    
   }
 
   /**
@@ -439,7 +432,7 @@ public:
   const T& operator()(int x, int y) {
     if(x < 0 || y < 0)
       throw  NegativeIndexSparseMatrixException();
-    if((x < max_row) && (y < max_column)){
+    if((x < size_row) && (y < size_column)){
       node *current = head;
       T& value = default_value;
 
@@ -488,9 +481,8 @@ public:
    * @throw NoSparseMatrixException() eccezione matrice inesistente
    */
   sparse_matrix(const sparse_matrix &other): default_value(other.default_value),
-					     max_row(other.max_row),
-					     max_column(other.max_column),
-					     size_row(0), size_column(0),
+					     size_row(other.size_row),
+					     size_column(other.size_column),
 					     head(nullptr), size(0) {
     node *curr = other.head;
 
@@ -749,8 +741,7 @@ public:
   template <typename Q>
   sparse_matrix(const sparse_matrix<Q> &other):
     default_value(static_cast<T>(other.get_default_value())),
-    max_row(other.get_max_row()), max_column(other.get_max_column()),
-    size_row(0), size_column(0),
+    size_row(other.get_size_row()), size_column(other.get_size_column()),
     head(nullptr), size(0) {
     
     typename sparse_matrix<Q>::const_iterator i, ie;

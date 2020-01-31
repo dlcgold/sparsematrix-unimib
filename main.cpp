@@ -38,11 +38,8 @@ typedef sparse_matrix<float> smatrixf;
 void test_fondamentali(){
   std::cout << "test matrice float 3x3 (valore default 0)\n";
   smatrixf floatNM(0, 3, 3);
-  std::cout << floatNM.get_size_column();
-  //floatNM.add(4, 2, 2);
-  
-  for(int i = 0; i < 3; i++){
-    for(int j = 0; j < 3; j++){
+  for(int i = 0; i < floatNM.get_size_row(); i++){
+    for(int j = 0; j < floatNM.get_size_column(); j++){
       if(i != j){
         if(j != 0 ){
 	  floatNM.add((float)(i+j+7) / (-1 * j * 3), i, j);
@@ -51,13 +48,13 @@ void test_fondamentali(){
 	}
       }
     }
-  }/*
-  assert(floatNM.get_size_row() == 3);
-  assert(floatNM.get_size_column() == 3);
-  assert(floatNM.get_size_row() == 3);
-  assert(floatNM.get_size_column() == 3);
+  }
+  // assert(floatNM.get_size_row() == 3);
+  // assert(floatNM.get_size_column() == 3);
+  // assert(floatNM.get_size_row() == 3);
+  // assert(floatNM.get_size_column() == 3);
   std::cout << "\ntest stampa matrice float con accesso mediante operator()\n";
-  printdef(floatNM, floatNM.get_max_row(), floatNM.get_max_column());
+  printdef(floatNM, floatNM.get_size_row(), floatNM.get_size_column());
   
   positive pos;
   int count = evaluate(floatNM, pos);
@@ -72,7 +69,7 @@ void test_fondamentali(){
   std::cout << "\ntest cast da matrice float a matrice di interi\n";
   smatrixi interaNM(floatNM);
   std::cout << "\ntest stampa matrice intera con accesso mediante operator()\n";
-  printdef(interaNM, interaNM.get_max_row(), interaNM.get_max_column());
+  printdef(interaNM, interaNM.get_size_row(), interaNM.get_size_column());
   
   count = evaluate(interaNM, pos);
   std::cout << "\ntest evaluate (numero positivi) matrice intera \n";
@@ -85,18 +82,14 @@ void test_fondamentali(){
   }
   std::cout << "\ntest assegnamento\n";
   smatrixf floatNM2 = floatNM;
-  printdef(floatNM2, floatNM2.get_max_row(), floatNM2.get_max_column());
+  printdef(floatNM2, floatNM2.get_size_row(), floatNM2.get_size_column());
   std::cout << "\ntest assegnamento con iteratore\n";
 
   smatrixf::iterator testBegin;
   testBegin = floatNM.begin();
-  
-  
- 
-  
-  */
+  std::cout << testBegin->v << "\n";
 }
-/*
+
 void test_vuota(const smatrixi vuota){
   std::cout << "\n\ntest stampa matrice vuota\n";
   std::cout << vuota << std::endl;
@@ -110,14 +103,17 @@ void test_vuota(const smatrixi vuota){
 void test_point(){
   std::cout << "\ntest stampa matrice di point con iteratore\n";
   smatrixp testp(point(0,0));
-  testp.add(point(1,1), 2, 2);
+ 
+  std::cout << "\n";
+  testp.add(point(1,1), 2, 5);
   testp.add(point(1,2), 1, 2);
-  testp.add(point(2,7), 0, 1);
+  testp.add(point(2,7), 0, 10000);
   testp.add(point(0,0), 1, 5);
   testp.add(point(5,4), 200, 4000);
+  
   smatrixp::iterator ip,iep;
-  for(ip=testp.begin(), iep=testp.end(); ip!=iep; ip++)
-    std::cout << ip->v.a << ", " << ip->v.b << std::endl;
+   for(ip=testp.begin(), iep=testp.end(); ip!=iep; ip++)
+     std::cout << ip->v.a << ", " << ip->v.b << std::endl;
   std::cout << "\ntest stampa matrice di point assegnata\n";
   smatrixp testpp = testp;
   testp.clear();
@@ -128,7 +124,7 @@ void test_point(){
   assert(count == 2);
   std::cout << "valori accettabili: " << count << " = 2\n";
   testpp.clear();
-}*/
+}
 int main(){
   
   /*test.add(-90, 830, 10);
@@ -217,8 +213,8 @@ int main(){
   std::cout << "ho " << evaluate(test4, defF) << " elementi di default";*/
 
   test_fondamentali();
-  // smatrixi costante(0);
-  // test_vuota(costante);
-  // test_point();
+  smatrixi costante(0);
+  test_vuota(costante);
+  test_point();
   return 0;
 }

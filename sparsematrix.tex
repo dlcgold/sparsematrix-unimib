@@ -121,6 +121,8 @@ necessari per il corretto funzionamento della stessa:
 \begin{itemize}
   \item il valore di default scelto obbligatoriamente dall'utente al
   momento della creazione di una matrice sparsa
+  \item un booleano per verificare se la matrice è stata definita
+  dall'utente con una dimensione predefinita
   \item indicazioni riguardanti il numero di righe e colonne
   \item il nodo \texttt{head} che punta all'inizio della struttura
   dati
@@ -235,6 +237,20 @@ effettivamente allocati, numero che è salvato nell'attributo
 restituendo il risultato.
 \newpage
 \section*{Test}
-Il primo test viene effettuando generando una \texttt{sparse_matrix}
-con valori di tipo \texttt{float} di dimensione definita $3\times 4$
+Il primo test viene effettuando generando una \texttt{sparse\_matrix}
+con valori di tipo \texttt{float} di dimensione definita $3\times
+3$. Vengono testati metodi che ritornano il numero di righe e di
+colonne. Si usa poi un metodo \texttt{printdef} per la stampa di
+dimensioni predefinite (possibilmente piccole) che itera come se si
+avesse a che fare con una matrice standard, stampando sia gli elementi
+caricati dall'utente che gli eventuali valori di default. Si procede
+poi con il test della funzione globale generica \texttt{evaluate} con
+il controllo del risultato mediante \texttt{assert}.\\
+Con la stessa tecnica si verifica anche la buona riuscita della
+costruzione di una nuova \texttt{sparse\_matrix} mediante
+\textit{cast}. Viene verificato anche l'assegnamento tra due
+\texttt{sparse\_matrix} e l'assegnamento tra iteratori.\\
+Vengono poi effettuati test simili su una matrice, di dimensioni non
+specificate, dove non vengono però aggiunti valori e su una
+\texttt{sparse\_matrix} definitan su un tipo custom \texttt{point}.
 \end{document}

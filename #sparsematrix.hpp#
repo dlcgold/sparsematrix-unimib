@@ -13,9 +13,9 @@
  * @return eccezione
  */
 class IndexOutOfBoundsException: public std::exception {
-    virtual const char* what() const throw() {
-        return "indice out of bound";
-    }
+  virtual const char* what() const throw() {
+    return "indice out of bound";
+  }
 };
 
 /**
@@ -24,9 +24,9 @@ class IndexOutOfBoundsException: public std::exception {
  * @return eccezione
  */
 class NoSparseMatrixException: public std::exception {
-    virtual const char* what() const throw() {
-        return "passaggio matrice nulla";
-    }
+  virtual const char* what() const throw() {
+    return "passaggio matrice nulla";
+  }
 };
 
 
@@ -36,9 +36,9 @@ class NoSparseMatrixException: public std::exception {
  * @return eccezione
  */
 class NoCastSparseMatrixException: public std::exception {
-    virtual const char* what() const throw() {
-        return "impossibile costruire matrice con cast";
-    }
+  virtual const char* what() const throw() {
+    return "impossibile costruire matrice con cast";
+  }
 };
 
 /**
@@ -47,9 +47,9 @@ class NoCastSparseMatrixException: public std::exception {
  * @return eccezione
  */
 class NegativeIndexSparseMatrixException: public std::exception {
-    virtual const char* what() const throw() {
-        return "indice negativo";
-    }
+  virtual const char* what() const throw() {
+    return "indice negativo";
+  }
 };
 
 /**
@@ -58,9 +58,9 @@ class NegativeIndexSparseMatrixException: public std::exception {
  * @return eccezione
  */
 class NegativeDimensionSparseMatrixException: public std::exception {
-    virtual const char* what() const throw() {
-        return "indice negativo";
-    }
+  virtual const char* what() const throw() {
+    return "indice negativo";
+  }
 };
 
 /**
@@ -69,9 +69,9 @@ class NegativeDimensionSparseMatrixException: public std::exception {
  * @return eccezione
  */
 class  noNodeException: public std::exception {
-    virtual const char* what() const throw() {
-        return "indice negativo";
-    }
+  virtual const char* what() const throw() {
+    return "indice negativo";
+  }
 };
 
 /**
@@ -172,9 +172,9 @@ private:
   node *head;
  
   /**
-    * @brief numero totale di elemi inseriti
-    *
-    */
+   * @brief numero totale di elemi inseriti
+   *
+   */
   int size;
 
   /**
@@ -196,7 +196,7 @@ private:
   }
 public:
 
-   /**
+  /**
    * @brief getter del valore di default
    *
    * @return valore di default di sparse_matrix
@@ -204,13 +204,13 @@ public:
   const T get_default_value() const {
     return default_value;
   }
-/**
+  /**
    * @brief getter del tipo di matrice
    *
    * @return true se la matrice è di dimensioni definite dall'utente
    */
   
-   bool get_dim() const {
+  bool get_dim() const {
     return dim;
   }
 
@@ -599,8 +599,8 @@ public:
     
   };
 
-    /**
-     * @brief iteratore costante (in lettura) per sparse_matrix
+  /**
+   * @brief iteratore costante (in lettura) per sparse_matrix
    */
 
   class const_iterator{
@@ -695,7 +695,7 @@ public:
     return iterator(head);
   }
 
-   /**
+  /**
    * @brief iteratore alla fine della sparse_matrix
    */
   iterator end() {
@@ -709,7 +709,7 @@ public:
     return const_iterator(head);
   }
 
-   /**
+  /**
    * @brief iteratore costante alla fine della sparse_matrix
    */
   const_iterator end() const {
@@ -749,15 +749,15 @@ public:
 };
 
 /**
-   * @brief costruttore copia con cast
-   *
-   * @tparam Q tipo della matrice per cast Q->T
-   *
-   * @param other altra sparse_matrix con valori di tipo Q
-   *
-   * @throw NoCastSparseMatrixException() eccezione cast fallito
-   * @throw NegativeIndexSparseMatrixException() indici negativi   
-   */
+ * @brief costruttore copia con cast
+ *
+ * @tparam Q tipo della matrice per cast Q->T
+ *
+ * @param other altra sparse_matrix con valori di tipo Q
+ *
+ * @throw NoCastSparseMatrixException() eccezione cast fallito
+ * @throw NegativeIndexSparseMatrixException() indici negativi   
+ */
 template <typename T>
 void printdef(sparse_matrix<T> smatrix, int n, int m){
   if(n < 0 || m < 0)

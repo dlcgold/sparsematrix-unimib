@@ -13,18 +13,17 @@
  *
  * @return numberofwords numero di parole
  */
-int countWords(std::string sentence) {
+int countWords(QString sentence) {
     int numberOfWords = 0;
-    unsigned int i;
 
-    if (isalpha(sentence[0])) {
+    if (sentence[0].isLetter()) {
         numberOfWords++;
     }
 
     // verifico che se ho una lettera che segue un carattere che non lo è
     // ho trovato una parola
-    for (i = 1; i < sentence.length(); i++) {
-        if ((isalpha(sentence[i])) && (!isalpha(sentence[i-1]))) {
+    for (int i = 1; i < sentence.length(); i++) {
+        if ((sentence[i].isLetter()) && (!sentence[i-1].isLetter())) {
             numberOfWords++;
         }
     }
@@ -150,7 +149,7 @@ void progettoQt::httpDownloadFinished() {
         ui->analyzeButton->move(ui->urlBox->size().width() +19,
                                 ui->analyzeButton->pos().y());
         // download finished normally
-        std::string textstr = text.toStdString();
+        //std::string textstr = text.toStdString();
 
         //qDebug() << "lunghezza: " << text.size();
         ui->textLabel->setText(text);
@@ -160,12 +159,12 @@ void progettoQt::httpDownloadFinished() {
         int countPara = 0;
         //int countNoChar = 0;
 
-        for(auto i: textstr){
-            if(i == '.' || i == '?' || i == '!' || i == ';')
+        for(int i = 0; i < text.length(); i++){
+            if(text[i] == '.' || text[i] == '?' || text[i] == '!' || text[i] == ';')
                 countPhrase++;
-            if(i == ' ')
+            if(text[i] == ' ')
                 countSpace++;
-            if(i == '\n' || i == '\t')
+            if(text[i] == '\n' || text[i] == '\t')
                 countPara++;
             countChars++;
         }
@@ -174,34 +173,27 @@ void progettoQt::httpDownloadFinished() {
 
         QString infoPhrase =
                 "<font color=\"green\"><b>Frasi: </b><font color=\"black\">"
-                + QString::fromStdString(std::to_string(countPhrase))+
-                QString::fromStdString("\n");
-        //ui->infoLabel->setText(QString::fromStdString(info));
+                + QString::number(countPhrase);
         ui->phraseLabel->setText(infoPhrase);
 
         QString infoWord =
                 "<font color=\"green\"><b>Parole: </b><font color=\"black\">"
-                + QString::fromStdString(std::to_string(countWords(textstr)))+
-                QString::fromStdString("\n");
+      + QString::number(countWords(text));
         ui->wordLabel->setText(infoWord);
 
         QString infoChar =
                 "<font color=\"green\"><b>Caratteri: </b><font color=\"black\">"
-                + QString::fromStdString(std::to_string(countChars))+
-                QString::fromStdString("\n");
-        //ui->infoLabel->setText(QString::fromStdString(info));
+                + QString::number(countChars);
         ui->charLabel->setText(infoChar);
 
         QString infoNoSpace =
                 "<font color=\"green\"><b>Caratteri senza spazi: </b><font color=\"black\">"
-                + QString::fromStdString(std::to_string(countChars - countSpace))+
-                QString::fromStdString("\n");
+                + QString::number(countChars - countSpace);
         ui->noSpaceLabel->setText(infoNoSpace);
 
         QString infoPara =
                 "<font color=\"green\"><b>Paragrafi: </b><font color=\"black\">"
-                + QString::fromStdString(std::to_string(countPara))+
-                QString::fromStdString("\n");
+                + QString::number(countPara);
         ui->paraLabel->setText(infoPara);
 
         reply->deleteLater();

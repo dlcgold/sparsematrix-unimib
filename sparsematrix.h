@@ -4,6 +4,7 @@
 #include <cmath>
 #include <iostream>
 #include <iterator>
+#include <cstddef>
 #include <ostream>
 #include <climits>
 
@@ -509,6 +510,12 @@ public:
     iterator(node *n) : elem(n) {}
     
   public:
+    typedef std::forward_iterator_tag iterator_category;
+    typedef typename node::element value_type;
+    typedef ptrdiff_t difference_type;
+    typedef typename node::element* pointer;
+    typedef typename node::element& reference;
+    
     //costruttori
     iterator() : elem(nullptr) {}
     iterator(const iterator &other) : elem(other.elem) {}
@@ -524,15 +531,15 @@ public:
     ~iterator() {}
 
     // ovveride accesso
-    typename node::element& operator*() const{
+    reference operator*() const{
       //elem ret = elem(elem->value, elem->i, elem->j);
-      return elem->ret;
+      return *elem->ret;
       
     }
 
-    typename node::element* operator->() const{
+    pointer operator->() const{
       
-      return &*elem->ret;
+      return (elem->ret);
     }
  
     // override post e pre incremento
@@ -571,6 +578,12 @@ public:
     // costruttore per iterare su struttura dati
     const_iterator(node *n) : elem(n) {}
   public:
+    typedef std::forward_iterator_tag iterator_category;
+    typedef typename node::element value_type;
+    typedef ptrdiff_t difference_type;
+    typedef const typename node::element* pointer;
+    typedef const typename node::element& reference;
+
     //costruttori
     const_iterator() : elem(nullptr) {}
     const_iterator(const const_iterator &other) : elem(other.elem) {}
@@ -585,10 +598,10 @@ public:
     ~const_iterator() {}
 
     // ovveride accesso
-    const typename node::element operator*() const{
+    reference operator*() const{
       return elem->ret;
     }
-    const typename node::element* operator->() const{
+    pointer operator->() const{
       return &*elem->ret;
     }
     

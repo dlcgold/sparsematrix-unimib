@@ -66,6 +66,9 @@ void test_fondamentali(){
   for(i = floatNM.begin(), ie= floatNM.end(); i!=ie; i++){
     std::cout << i->v << std::endl;
   }
+  i = floatNM.begin();
+  
+  std::cout << "\n\n" << (*i).v << "\n";
   std::cout << "\ntest cast da matrice float a matrice di interi\n";
   smatrixi interaNM(floatNM);
   std::cout << "\ntest stampa matrice intera con accesso mediante operator()\n";

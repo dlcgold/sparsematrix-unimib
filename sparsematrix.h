@@ -599,10 +599,10 @@ public:
 
     // ovveride accesso
     reference operator*() const{
-      return elem->ret;
+      return *elem->ret;
     }
     pointer operator->() const{
-      return &*elem->ret;
+      return elem->ret;
     }
     
     // override post e pre incremento

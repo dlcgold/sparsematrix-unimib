@@ -247,7 +247,7 @@ public:
    *
    * @param dvalue valore di default obbligatorio
    */
-  sparse_matrix(T dvalue): default_value(dvalue), dim(false),
+  explicit sparse_matrix(T dvalue): default_value(dvalue), dim(false),
 			   size_row(INT_MAX),
 			   size_column(INT_MAX),
 			   head(nullptr), size(0){};
@@ -262,7 +262,7 @@ public:
    *
    * @throw NegativeDimensionSparseMatrixException() per dimensioni negative
    */
-  sparse_matrix(T dvalue, int row, int column):
+  sparse_matrix(const T dvalue, int row, int column):
     default_value(dvalue), dim(true), size_row(row),
     size_column(column), head(nullptr), size(0){
     
@@ -539,7 +539,7 @@ public:
 
     pointer operator->() const{
       
-      return (elem->ret);
+      return elem->ret;
     }
  
     // override post e pre incremento

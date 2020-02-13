@@ -42,7 +42,7 @@ void test_fondamentali(){
     for(int j = 0; j < floatNM.get_size_column(); j++){
       if(i != j){
         if(j != 0 ){
-	  floatNM.add((float)(i+j+7) / (-1 * j * 3), i, j);
+	  floatNM.add((float)(i + j + 7) / (-1 * j * 3), i, j);
 	}else{
 	  floatNM.add(i + (j * (-1)), i, j);
 	}
@@ -63,7 +63,7 @@ void test_fondamentali(){
   std::cout << count << " = " << 2 << "\n";
   std::cout << "\ntest stampa matrice float con accesso mediante iteratore\n";
   smatrixf::iterator i, ie;
-  for(i = floatNM.begin(), ie= floatNM.end(); i!=ie; i++){
+  for(i = floatNM.begin(), ie = floatNM.end(); i != ie; i++){
     std::cout << i->v << std::endl;
   }
   i = floatNM.begin();
@@ -80,7 +80,7 @@ void test_fondamentali(){
   std::cout << count << " = " << 2 << "\n";
   std::cout << "\ntest stampa matrice intera con accesso mediante iteratore\n";
   smatrixi::iterator iu, ieu;
-  for(iu = interaNM.begin(), ieu = interaNM.end(); iu!=ieu; iu++){
+  for(iu = interaNM.begin(), ieu = interaNM.end(); iu != ieu; iu++){
     std::cout << iu->v << std::endl;
   }
   std::cout << "\ntest assegnamento\n";
@@ -119,7 +119,7 @@ void test_point(){
   assert(testp.get_size_row()==200);
   assert(testp.get_size_column()==10000);  
   smatrixp::iterator ip,iep;
-   for(ip=testp.begin(), iep=testp.end(); ip!=iep; ip++)
+   for(ip=testp.begin(), iep=testp.end(); ip != iep; ip++)
      std::cout << ip->v.a << ", " << ip->v.b << std::endl;
   std::cout << "\ntest stampa matrice di point assegnata\n";
   smatrixp testpp = testp;

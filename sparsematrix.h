@@ -248,13 +248,13 @@ public:
    * @param dvalue valore di default obbligatorio
    */
   explicit sparse_matrix(T dvalue): default_value(dvalue), dim(false),
-			   size_row(INT_MAX),
-			   size_column(INT_MAX),
-			   head(nullptr), size(0){};
+				    size_row(INT_MAX),
+				    size_column(INT_MAX),
+				    head(nullptr), size(0){};
 
 
   /**
-   * @brief costruttore della matrice di dimensioni definite					    
+   * @brief costruttore della matrice di dimensioni definite  		    
    *
    * @param dvalue valore di default obbligatorio
    * @param row numero di righe
@@ -403,8 +403,8 @@ public:
   void print() const{
     node *current = head;
     while(current != nullptr){
-      std::cout << current->ret->v << " in (" << current->ret->x << ", " << current->ret->y
-		<<")\n";
+      std::cout << current->ret->v << " in (" << current->ret->x << ", "
+		<< current->ret->y <<")\n";
       current = current->next;
       
     }
@@ -695,10 +695,10 @@ public:
    */
   template <typename Q>
   sparse_matrix(const sparse_matrix<Q> &other):
-    default_value(static_cast<T>(other.get_default_value())), dim(other.get_dim()),
-    size_row(other.get_size_row()), size_column(other.get_size_column()),
-    head(nullptr), size(0) {
-
+    default_value(static_cast<T>(other.get_default_value())),
+    dim(other.get_dim()), size_row(other.get_size_row()),
+    size_column(other.get_size_column()), head(nullptr), size(0) {
+    
     // mi muovo con gli iteratori nella matrice sparsa passata in ingresso
     // effettuo la add alla nuova matrice sparsa con cast del valore
     typename sparse_matrix<Q>::const_iterator i, ie;
